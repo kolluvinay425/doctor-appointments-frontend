@@ -10,7 +10,7 @@ function CarouselSlide() {
         </h1>
         <h3>Book your Doctor Now</h3>
         <Link
-          to="appointment"
+          to="hospitals"
           class="btn btn-outline-light btn-lg m-2"
           role="button"
           rel="nofollow"
@@ -19,7 +19,7 @@ function CarouselSlide() {
           Find Hospitals
         </Link>
         <Link
-          to="doctor"
+          to="doctors"
           class="btn btn-outline-light btn-lg m-2"
           role="button"
           id="home-btns"

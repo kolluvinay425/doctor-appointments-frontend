@@ -1,6 +1,5 @@
 import { React, useState } from "react";
-import "../../styles/login.css";
-
+import "../../../styles/login.css";
 function Login() {
   const [isActive, setIsActive] = useState(false);
   const toggleAuth = () => {
