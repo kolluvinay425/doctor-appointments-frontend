@@ -12,7 +12,7 @@ function Doctor() {
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <Link to="/doc-detail">
+                <Link to="/doc-profile">
                   <img
                     className="img-fluid"
                     src="https://picsum.photos/130/130?image=1027"

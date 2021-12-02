@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import DocProfile from "./components/pages/doctors/DocProfile";
 import DocDetail from "./components/pages/doctors/DocDetail";
 import Doctor from "./components/pages/doctors/Doctor";
 import NavBar from "./components/Navbar";
@@ -20,6 +21,7 @@ function App() {
             <Route path="/hospitals" exact component={Hospital} />
             <Route path="/doctors" exact component={Doctor} />
             <Route path="/doc-detail" exact component={DocDetail} />
+            <Route path="/doc-profile" exact component={DocProfile} />
           </div>
         </Switch>
         <Footer />
