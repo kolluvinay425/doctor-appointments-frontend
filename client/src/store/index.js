@@ -7,6 +7,7 @@ const initaial = {
     data: [],
   },
   appointments: {
+    isBooked: false,
     data: [],
   },
   hospitals: {
