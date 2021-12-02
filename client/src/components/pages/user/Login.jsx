@@ -1,7 +1,49 @@
 import { React, useState } from "react";
+import { create } from "axios";
+import { useHistory } from "react-router";
+
+import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
 function Login() {
   const [isActive, setIsActive] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const URL = create({ baseURL: "http://localhost:3001" });
+  const history = useHistory();
+  console.log(history);
+  const path = history.location.pathname;
+  console.log("path!!", path);
+  const login = async () => {
+    const email = userInfo.email;
+    const password = userInfo.password;
+    try {
+      const { data } = await URL.post(
+        "/user/login",
+        { email, password },
+        { method: "POST" }
+      );
+      console.log("Tokens", data);
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+    } catch (error) {
+      console.log("error", error);
+    }
+
+    getUserInfo();
+  };
+
+  const getUserInfo = async () => {
+    const { data } = await API.get("/user/me");
+    console.log("me", data);
+    if (data) {
+      //dispatch(setUserInfo(data));
+      history.push("/");
+    }
+  };
+
+  //..........userToggle.......
   const toggleAuth = () => {
     console.log("clicked");
     setIsActive(!isActive);
@@ -120,31 +162,38 @@ function Login() {
                         <form method="post">
                           <div class="form-group">
                             <input
+                              onChange={(e) =>
+                                setUserInfo({
+                                  ...userInfo,
+                                  email: e.target.value,
+                                })
+                              }
+                              value={userInfo.email}
                               type="text"
-                              name="LGform1_user"
                               class="form-control"
                               placeholder="Your Email *"
-                              value=""
-                              required=""
                             />
                           </div>
                           <br />
                           <div class="form-group">
                             <input
+                              onChange={(e) =>
+                                setUserInfo({
+                                  ...userInfo,
+                                  password: e.target.value,
+                                })
+                              }
+                              value={userInfo.password}
                               type="password"
-                              name="LGform1_pwd"
                               class="form-control"
                               placeholder="Your Password *"
-                              value=""
-                              required=""
                             />
                           </div>
                           <br />
                           <div class="form-group">
                             <input
-                              type="submit"
-                              name="LGform1"
-                              class="btnContactSubmit"
+                              onClick={(e) => login(e)}
+                              type="button"
                               value="Login"
                             />
                             <a
