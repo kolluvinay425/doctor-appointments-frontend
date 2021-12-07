@@ -7,7 +7,7 @@ function DocDetail() {
     <>
       <header style={{ padding: "px" }}>
         <div class="overlay">
-          <h1>Simply The Best</h1>
+          <h3>Hospital Name</h3>
           <h3>Reasons for Choosing US</h3>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
@@ -20,13 +20,13 @@ function DocDetail() {
         </div>
       </header>
       <div className="container">
-        <h3>Available Doctors</h3>
+        <h4>Available Doctors</h4>
         <br />
         <div className="row">
           <div className="col-12 col-sm-6 col-md-4 col-lg-3">
             <div className="our-team">
               <div className="picture">
-                <Link to="/doc-detail">
+                <Link to="/doc-profile">
                   <img
                     className="img-fluid"
                     src="https://picsum.photos/130/130?image=1027"
@@ -34,7 +34,7 @@ function DocDetail() {
                 </Link>
               </div>
               <div className="team-content">
-                <h3 className="name">Michele Miller</h3>
+                <h4 className="name">Michele Miller</h4>
                 <h4 className="title">Web Developer</h4>
                 <br />
               </div>

@@ -1,23 +1,27 @@
 import { React, useState } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
-
+import { setUserInfo, isLoggedIn } from "../../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
 function Login() {
   const [isActive, setIsActive] = useState(false);
-  const [userInfo, setUserInfo] = useState({
+  const [userCreds, setUserCreds] = useState({
     email: "",
     password: "",
   });
   const URL = create({ baseURL: "http://localhost:3001" });
   const history = useHistory();
-  console.log(history);
-  const path = history.location.pathname;
-  console.log("path!!", path);
+  const dispatch = useDispatch();
+  // const path = history.location.pathname;
+  // console.log("path!!", path);
+  const data = useSelector((s) => s.user);
+  console.log("current redux data", data);
+  const b = true;
   const login = async () => {
-    const email = userInfo.email;
-    const password = userInfo.password;
+    const email = userCreds.email;
+    const password = userCreds.password;
     try {
       const { data } = await URL.post(
         "/user/login",
@@ -25,8 +29,11 @@ function Login() {
         { method: "POST" }
       );
       console.log("Tokens", data);
-      localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("refreshToken", data.refreshToken);
+      if (data) {
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+      } else {
+      }
     } catch (error) {
       console.log("error", error);
     }
@@ -35,11 +42,18 @@ function Login() {
   };
 
   const getUserInfo = async () => {
-    const { data } = await API.get("/user/me");
-    console.log("me", data);
-    if (data) {
-      //dispatch(setUserInfo(data));
-      history.push("/");
+    try {
+      const { data } = await API.get("/user/me");
+      console.log("me", data);
+      if (data) {
+        dispatch(setUserInfo(data));
+        dispatch(isLoggedIn(b));
+        history.push("/");
+      } else {
+        console.log("enter password or email corretly");
+      }
+    } catch (error) {
+      console.log("enter password or email corretly");
     }
   };
 
@@ -163,12 +177,12 @@ function Login() {
                           <div class="form-group">
                             <input
                               onChange={(e) =>
-                                setUserInfo({
-                                  ...userInfo,
+                                setUserCreds({
+                                  ...userCreds,
                                   email: e.target.value,
                                 })
                               }
-                              value={userInfo.email}
+                              value={userCreds.email}
                               type="text"
                               class="form-control"
                               placeholder="Your Email *"
@@ -178,12 +192,12 @@ function Login() {
                           <div class="form-group">
                             <input
                               onChange={(e) =>
-                                setUserInfo({
-                                  ...userInfo,
+                                setUserCreds({
+                                  ...userCreds,
                                   password: e.target.value,
                                 })
                               }
-                              value={userInfo.password}
+                              value={userCreds.password}
                               type="password"
                               class="form-control"
                               placeholder="Your Password *"

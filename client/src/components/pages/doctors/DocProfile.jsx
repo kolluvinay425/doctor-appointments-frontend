@@ -8,7 +8,7 @@ function DocProfile() {
         data-parallax="true"
         style={{
           backgroundImage:
-            "http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png",
+            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fdusk%2F&psig=AOvVaw2rstE-ZgI54osJFe_VaDT-&ust=1638623108348000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMj24fTYx_QCFQAAAAAdAAAAABAD",
         }}
       ></div>
       <div class="main main-raised">
