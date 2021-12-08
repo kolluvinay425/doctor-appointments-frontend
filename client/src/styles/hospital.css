@@ -152,6 +152,8 @@ body {
 
 .profile-card-2 img {
   transition: all linear 0.25s;
+  min-width: 150px;
+  max-height: 500px;
 }
 
 .profile-card-2 .profile-name {
@@ -159,7 +161,7 @@ body {
   left: 30px;
   bottom: 70px;
   font-size: 30px;
-  color: #fff;
+  color: rgb(53, 44, 44);
   text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   font-weight: bold;
   transition: all linear 0.25s;
@@ -177,13 +179,14 @@ body {
   position: absolute;
   bottom: 50px;
   left: 30px;
-  color: #fff;
+  color: rgb(58, 51, 51);
   font-size: 13px;
   transition: all linear 0.25s;
 }
 
 .profile-card-2 .profile-icons .fa {
   margin: 5px;
+  color: #021830;
 }
 
 .profile-card-2:hover img {

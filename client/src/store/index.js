@@ -1,6 +1,7 @@
 import { createStore, combineReducers, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { userReducer } from "./reducers";
+import { hospitalReducer } from "./reducers/hospital";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage/session";
 
@@ -9,11 +10,11 @@ export const initialState = {
     isLoggedIn: false,
     data: [],
   },
+  hospitals: {
+    data: [],
+  },
   // appointments: {
   //   isBooked: false,
-  //   data: [],
-  // },
-  // hospitals: {
   //   data: [],
   // },
   // doctor: {
@@ -25,7 +26,10 @@ const persistConfig = {
   storage,
 };
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const mainReducer = combineReducers({ user: userReducer });
+const mainReducer = combineReducers({
+  user: userReducer,
+  hospitals: hospitalReducer,
+});
 const persistedReducer = persistReducer(persistConfig, mainReducer);
 
 const configureStore = createStore(

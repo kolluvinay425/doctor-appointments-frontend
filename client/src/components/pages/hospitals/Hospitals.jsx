@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../../styles/hospital.css";
 import "../../../styles/search.css";
 import { Link } from "react-router-dom";
-
+import { fetchHospitals } from "../../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 function Hospital() {
+  //const [hospitals, setHospitals] = useState([]);
+  const dispatch = useDispatch();
+  const hospitals = useSelector((s) => s.hospitals.data);
+  console.log("redux data", hospitals);
+  const getHospitals = async () => {
+    try {
+      const resp = await fetch("http://localhost:3001/hospital/doctors");
+
+      if (resp) {
+        const data = await resp.json();
+        //console.log("hospitals", data);
+        //setHospitals(data);
+        dispatch(fetchHospitals(data));
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getHospitals();
+    console.log("hello");
+  }, []);
   return (
     <>
       <div class="bbbootstrap">
@@ -29,36 +50,37 @@ function Hospital() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <h4 className="text-center">
-              <strong>Hospitals near You</strong>
-            </h4>
-            <hr />
-            <div className="profile-card-2">
-              <Link to="/doc-detail">
-                <img
-                  src="https://5.imimg.com/data5/GX/WF/VP/ANDROID-44896696/product-jpeg-500x500.jpeg"
-                  className="img img-responsive"
-                />
-              </Link>
+          <h4 className="text-center">
+            <strong>Hospitals near You</strong>
+          </h4>
+          <hr />
+          {hospitals.map((hospital) => (
+            <>
+              <div className="col-md-3">
+                <div className="profile-card-2">
+                  <Link to="/doc-detail">
+                    <img src={hospital.image} className="img img-responsive" />
+                  </Link>
 
-              <div className="profile-name"> CHAMPION HOSPITALS</div>
-              <div className="profile-username">@CHAMPIONHOSPITALS</div>
-              <div className="profile-icons m-1">
-                <a href="#">
-                  <i className="bi bi-facebook "></i>
-                </a>
-                <br />
-                <a href="#">
-                  <i className="bi bi-twitter"></i>
-                </a>
-                <br />
-                <a href="#">
-                  <i className="bi bi-linkedin"></i>
-                </a>
+                  <div className="profile-name"> {hospital.name}</div>
+                  <div className="profile-username">@{hospital.location}</div>
+                  <div className="profile-icons m-1">
+                    <a href="#">
+                      <i className="bi bi-facebook "></i>
+                    </a>
+                    <br />
+                    <a href="#">
+                      <i className="bi bi-twitter"></i>
+                    </a>
+                    <br />
+                    <a href="#">
+                      <i className="bi bi-linkedin"></i>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          ))}
         </div>
       </div>
     </>
