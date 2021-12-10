@@ -4,10 +4,16 @@ import "../../../styles/search.css";
 import { Link } from "react-router-dom";
 import { fetchHospitals } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
+
 function Hospital() {
   //const [hospitals, setHospitals] = useState([]);
   const dispatch = useDispatch();
   const hospitals = useSelector((s) => s.hospitals.data);
+  const history = useHistory();
+  const path = history.location.pathname;
+  console.log("path!!", path);
+
   console.log("redux data", hospitals);
   const getHospitals = async () => {
     try {
@@ -58,7 +64,7 @@ function Hospital() {
             <>
               <div className="col-md-3">
                 <div className="profile-card-2">
-                  <Link to="/doc-detail">
+                  <Link to={`/hospital/${hospital.name}`}>
                     <img src={hospital.image} className="img img-responsive" />
                   </Link>
 

@@ -1,7 +1,13 @@
 import React from "react";
 import "../../../styles/doctor.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
+
 function Doctor() {
+  const history = useHistory();
+  const path = history.location.pathname;
+  console.log("path!!", path);
+
   return (
     <>
       <br />

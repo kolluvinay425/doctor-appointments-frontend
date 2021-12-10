@@ -26,7 +26,7 @@ function App() {
                 <Route path="/authenticate" exact component={Login} />
                 <Route path="/hospitals" exact component={Hospital} />
                 <Route path="/doctors" exact component={Doctor} />
-                <Route path="/doc-detail" exact component={DocDetail} />
+                <Route path="/hospital/:id" exact component={DocDetail} />
                 <Route path="/doc-profile" exact component={DocProfile} />
                 <Route path="/user-profile" exact component={UserProfile} />
               </div>

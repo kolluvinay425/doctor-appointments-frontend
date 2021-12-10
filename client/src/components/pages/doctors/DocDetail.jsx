@@ -1,8 +1,12 @@
 import React from "react";
 import "../../../styles/docDetail.css";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 function DocDetail() {
+  const history = useHistory();
+  const path = history.location.pathname;
+  console.log("path!!", path);
   return (
     <>
       <header style={{ padding: "px" }}>

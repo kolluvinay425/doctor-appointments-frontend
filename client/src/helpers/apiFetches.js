@@ -3,7 +3,7 @@ import { create, defaults } from "axios";
 const API = create({ baseURL: "http://localhost:3001" });
 
 const refreshAccessToken = async () => {
-  const { data } = await API.post("/user/login", {
+  const { data } = await API.post("/doctor/login", {
     actualRefreshToken: localStorage.getItem("refreshToken"),
   });
   localStorage.setItem("accessToken", data.accessToken);
@@ -12,7 +12,7 @@ const refreshAccessToken = async () => {
 };
 
 const registerTokens = async () => {
-  const { data } = await API.post("/user/login", {
+  const { data } = await API.post("/doctor/login", {
     actualAcessToken: localStorage.getItem("accessToken"),
     actualRefreshToken: localStorage.getItem("refreshToken"),
   });
@@ -39,7 +39,10 @@ API.interceptors.response.use(
   (response) => response,
   async function (error) {
     const failedRequest = error.config;
-    if (error.response.status === 401 && failedRequest.url !== "/user/login") {
+    if (
+      error.response.status === 401 &&
+      failedRequest.url !== "/doctor/login"
+    ) {
       await refreshAccessToken();
       await registerTokens();
       const retryRequest = API(failedRequest);
@@ -50,4 +53,29 @@ API.interceptors.response.use(
   }
 );
 
+export const getHospitals = async () => {
+  try {
+    const resp = await fetch("http://localhost:3001/hospital/doctors");
+    if (resp) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (error) {}
+};
+export const doctorRegister = async (data) => {
+  console.log("daaaa", data.firstName);
+  try {
+    const resp = await fetch("http://localhost:3001/doctor/register", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringiffy(data),
+    });
+    if (resp) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (error) {}
+};
 export default API;

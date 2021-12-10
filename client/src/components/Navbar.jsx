@@ -2,9 +2,11 @@ import React from "react";
 import { MdMedicalServices } from "react-icons/md";
 import { NavLink as Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { isLoggedIn, setUserInfo } from "../store/actions";
+import { isLoggedIn } from "../store/actions";
+import { isDocLoggedIn, setDoctorInfo } from "../store/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { BsFillCaretDownFill } from "react-icons/bs";
 
 import {
   Nav,
@@ -21,12 +23,13 @@ function NavBar() {
   const data = [];
   const logout = () => {
     localStorage.clear();
-    dispatch(isLoggedIn(b));
-    dispatch(setUserInfo(data));
+    dispatch(isDocLoggedIn(b));
+    dispatch(setDoctorInfo(data));
+
     history.push("/");
   };
-  const isUserLoddedIn = useSelector((s) => s.user);
-  console.log("cfrom nav component", isUserLoddedIn);
+  const isDocLoggededIn = useSelector((s) => s.doctor);
+  console.log("cfrom nav component", isDocLoggededIn);
   return (
     <>
       <Nav>
@@ -46,9 +49,10 @@ function NavBar() {
           <NavLink to="/contact-us" activeStyle>
             <b>Contact Us</b>
           </NavLink>
-          {isUserLoddedIn.isLoggedIn ? (
+          {isDocLoggededIn.isDocLoggedIn ? (
             <NavLink to="" onClick={logout} activeStyle>
               <b>Log Out</b>
+              <BsFillCaretDownFill />
             </NavLink>
           ) : (
             ""
@@ -57,7 +61,7 @@ function NavBar() {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        {isUserLoddedIn.isLoggedIn ? (
+        {isDocLoggededIn.isDocLoggedIn ? (
           <>
             <NavBtn>
               <Link to="user-profile">
@@ -67,7 +71,7 @@ function NavBar() {
                     maxWidth: "35px",
                     cursor: "pointer",
                   }}
-                  src={isUserLoddedIn.data.image}
+                  src={isDocLoggededIn.data.image}
                   alt=""
                 />
               </Link>
