@@ -5,7 +5,7 @@ function CarouselSlide() {
   return (
     <div class="hero-image">
       <div class="hero-text">
-        <h1>
+        <h1 style={{ fontSize: "35px", fontFamily: "sans-serif" }}>
           Booking Doctor Appointment <br /> Becomes Easier!
         </h1>
         <h3>Book your Doctor Now</h3>

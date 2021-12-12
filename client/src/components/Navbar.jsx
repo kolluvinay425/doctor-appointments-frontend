@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { isLoggedIn, setUserInfo } from "../store/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import "../styles/carousel.css";
 
 import {
   Nav,
@@ -31,7 +32,7 @@ function NavBar() {
     <>
       <Nav>
         <Link to="/">
-          <h1 style={{ color: "white", curser: "pointer" }}>
+          <h1 style={{ color: "white", curser: "pointer", fontSize: "40px" }}>
             <MdMedicalServices />
           </h1>
         </Link>

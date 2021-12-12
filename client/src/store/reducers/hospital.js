@@ -1,4 +1,4 @@
-import { FETCH_HOSPITALS } from "../actions";
+import { FETCH_HOSPITALS, QUERY_HOSPITALS } from "../actions";
 import { initialState } from "..";
 
 export const hospitalReducer = (state = initialState.hospitals, action) => {
@@ -9,7 +9,11 @@ export const hospitalReducer = (state = initialState.hospitals, action) => {
         ...state,
         data: payload,
       };
-
+    case "QUERY_HOSPITALS":
+      return {
+        ...state,
+        queryData: payload,
+      };
     default:
       return state;
   }

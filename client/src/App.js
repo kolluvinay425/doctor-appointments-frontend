@@ -1,14 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import DoctorAppointmentSlots from "./components/pages/appointment/DoctorAppointmentSlots";
 import UserProfile from "./components/pages/user/UserProfile";
 import DocProfile from "./components/pages/doctors/DocProfile";
-import DocDetail from "./components/pages/doctors/DocDetail";
 import Doctor from "./components/pages/doctors/Doctor";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/pages/user/Login";
 import CarouselSlide from "./components/CarouselSlide";
 import Hospital from "./components/pages/hospitals/Hospitals";
+import HospitLDetail from "./components/pages/hospitals/HospitalDetail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { persistor, configureStore } from "./store";
@@ -26,9 +27,14 @@ function App() {
                 <Route path="/authenticate" exact component={Login} />
                 <Route path="/hospitals" exact component={Hospital} />
                 <Route path="/doctors" exact component={Doctor} />
-                <Route path="/doc-detail" exact component={DocDetail} />
-                <Route path="/doc-profile" exact component={DocProfile} />
+                <Route path="/hospital/:id" exact component={HospitLDetail} />
+                <Route path="/doc-profile/:id" exact component={DocProfile} />
                 <Route path="/user-profile" exact component={UserProfile} />
+                <Route
+                  path="/doctor-appointment/:idd"
+                  exact
+                  component={DoctorAppointmentSlots}
+                />
               </div>
             </Switch>
             <Footer />

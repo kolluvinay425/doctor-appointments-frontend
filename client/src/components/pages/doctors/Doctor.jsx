@@ -1,61 +1,69 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import "../../../styles/searchTwo.css";
 import "../../../styles/doctor.css";
-import { Link } from "react-router-dom";
+import DoctorsQuery from "./DoctorsQuery";
+import DoctorsList from "./DoctorsList";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDoctors, findDoctors } from "../../../store/actions";
 function Doctor() {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const doctorQuery = useSelector((s) => s.doctor.queryData);
+  const searchDoctor = async (event) => {
+    event.preventDefault();
+
+    dispatch(findDoctors(query));
+  };
+
+  const getDoctors = async () => {
+    try {
+      const resp = await fetch("http://localhost:3001/doctor/");
+      if (resp) {
+        const data = await resp.json();
+        console.log("doctors-------->", data);
+        dispatch(fetchDoctors(data));
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getDoctors();
+  }, []);
   return (
     <>
-      <br />
-      <br />
-      <br />
+      <div className="bbbootstrap">
+        <div className="container">
+          <form>
+            <span
+              role="status"
+              aria-live="polite"
+              className="ui-helper-hidden-accessible"
+            ></span>
+            <input
+              type="text"
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyUp={searchDoctor}
+              value={query}
+              placeholder="Search doctor by name ,specialization etc."
+              className="InputBox "
+            />
+            <input
+              type="submit"
+              onClick={searchDoctor}
+              className="Button"
+              value="GO"
+            />
+          </form>
+        </div>
+      </div>
       <div className="container">
         <div className="row">
-          <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-            <div className="our-team">
-              <div className="picture">
-                <Link to="/doc-profile">
-                  <img
-                    className="img-fluid"
-                    src="https://picsum.photos/130/130?image=1027"
-                  />
-                </Link>
-              </div>
-              <div className="team-content">
-                <h3 className="name">Michele Miller</h3>
-                <h4 className="title">Web Developer</h4>
-                <br />
-              </div>
-              <ul className="social">
-                <li>
-                  <a
-                    href="https://codepen.io/collection/XdWJOQ/"
-                    className="bi bi-facebook "
-                    aria-hidden="true"
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://codepen.io/collection/XdWJOQ/"
-                    className="bi bi-twitter"
-                    aria-hidden="true"
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://codepen.io/collection/XdWJOQ/"
-                    className="bi bi-google"
-                    aria-hidden="true"
-                  ></a>
-                </li>
-                <li>
-                  <a
-                    href="https://codepen.io/collection/XdWJOQ/"
-                    className="bi bi-linkedin"
-                    aria-hidden="true"
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          {doctorQuery && (
+            <>
+              <h5>search results</h5>
+              <DoctorsQuery />
+            </>
+          )}
+          <DoctorsList />
         </div>
       </div>
     </>
