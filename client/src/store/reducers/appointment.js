@@ -1,5 +1,5 @@
 import { initialState } from "..";
-import { TODAY_APPOINTMENTS, QUERY_APPOINTMENTS } from "../actions";
+import { QUERY_APPOINTMENTS, IS_MODAL } from "../actions";
 
 export const appointmentReducer = (
   state = initialState.appointments,
@@ -7,15 +7,15 @@ export const appointmentReducer = (
 ) => {
   const { type, payload } = action;
   switch (type) {
-    case TODAY_APPOINTMENTS:
-      return {
-        ...state,
-        todayAppointments: payload,
-      };
     case QUERY_APPOINTMENTS:
       return {
         ...state,
         queryAppointment: payload,
+      };
+    case IS_MODAL:
+      return {
+        ...state,
+        isModel: payload,
       };
     default:
       return state;

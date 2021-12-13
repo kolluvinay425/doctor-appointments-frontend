@@ -5,13 +5,14 @@ import { setUserInfo, isLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
+export const URL = create({ baseURL: "http://localhost:3001" });
+
 function Login() {
   const [isActive, setIsActive] = useState(false);
   const [userCreds, setUserCreds] = useState({
     email: "",
     password: "",
   });
-  const URL = create({ baseURL: "http://localhost:3001" });
   const history = useHistory();
   const dispatch = useDispatch();
   // const path = history.location.pathname;

@@ -7,32 +7,31 @@ export const FIND_HOS_DOCTORS = "FIND_HOS_DOCTORS";
 export const QUERY_HOSPITALS = "QUERY_HOSPITALS";
 export const QUERY_DOCTORS = "QUERY_DOCTORS";
 export const DOCTOR_DETAIL = "DOCTOR_DETAIL";
-export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
+// export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
-
+export const IS_MODAL = "IS_MODAL";
 const url = "http://localhost:3001";
 
-export const todayAppointments = (docId, todayDate) => {
-  return async (dispatch) => {
-    try {
-      let resp = await fetch(
-        `${url}/appointment?docId=${docId}&date=${todayDate}`
-      );
-      if (resp.ok) {
-        const data = await resp.json();
-        dispatch({
-          type: TODAY_APPOINTMENTS,
-          payload: data,
-        });
-        //console.log("TODAY_APPOINTMENTS", data);
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const todayAppointments = (docId, date) => {
+//   return async (dispatch) => {
+//     try {
+//       let resp = await fetch(`${url}/appointment?docId=${docId}&date=${date}`);
+//       if (resp.ok) {
+//         const data = await resp.json();
+
+//         dispatch({
+//           type: TODAY_APPOINTMENTS,
+//           payload: data,
+//         });
+//         //console.log("TODAY_APPOINTMENTS", data);
+//       } else {
+//         console.log("error");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 export const queryAppointments = (docId, date) => {
   return async (dispatch) => {
     try {
@@ -133,9 +132,13 @@ export const fetchDoctors = (data) => ({
   type: FETCH_DOCTORS,
   payload: data,
 });
-export const isLoggedIn = (b) => ({
+export const isLoggedIn = (boolean) => ({
   type: IS_LOGGEDIN,
-  payload: b,
+  payload: boolean,
+});
+export const isModel = (boolean) => ({
+  type: IS_MODAL,
+  payload: boolean,
 });
 export const fetchHospitals = (data) => ({
   type: FETCH_HOSPITALS,

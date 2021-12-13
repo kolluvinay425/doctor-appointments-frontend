@@ -8,7 +8,7 @@ function DoctorsList() {
   return (
     <div className="row">
       {doctorQuery.map((doctor) => (
-        <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
           <div className="our-team">
             <div className="picture">
               <Link to={`/doc-profile/${doctor._id}`}>
@@ -17,9 +17,14 @@ function DoctorsList() {
             </div>
             <div className="team-content">
               <h4 className="name">
-                {doctor.firstName} {doctor.lastName}
+                <b>
+                  {doctor.firstName} {doctor.lastName}
+                </b>
               </h4>
-              <h4 className="title">{doctor.specialization}</h4>
+
+              <h4 className="title">
+                <b>{doctor.specialization}</b>
+              </h4>
               <br />
             </div>
             <ul className="social">

@@ -19,6 +19,7 @@ export const initialState = {
   },
   appointments: {
     isBooked: false,
+    isModel: false,
     todayAppointments: [],
     queryAppointment: [],
   },

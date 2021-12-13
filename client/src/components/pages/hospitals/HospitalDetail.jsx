@@ -11,7 +11,6 @@ function HospitLDetail() {
     dispatch(findHosDoctors(id));
   };
   const hosDocs = useSelector((s) => s.doctor.hospitalDoctors);
-  console.log("djbceljdvbjldfvbjdfsvb", hosDocs);
 
   useEffect(() => {
     hosDoctors();
@@ -37,7 +36,7 @@ function HospitLDetail() {
         <br />
         <div className="row">
           {hosDocs.map((doc) => (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div key={doc._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
               <div className="our-team">
                 <div className="picture">
                   <Link to={`/doc-profile/${doc._id}`}>

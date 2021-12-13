@@ -1,35 +1,54 @@
 import { React, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import Calendar from "react-calendar";
+import { Button, Modal } from "react-bootstrap";
 import "../../../styles/docProfile.css";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { doctorDetail } from "../../../store/actions";
 import { Link } from "react-router-dom";
-import { todayAppointments } from "../../../store/actions";
+import { queryAppointments } from "../../../store/actions";
+import DoctorAppointmentSlots from "../appointment/DoctorAppointmentSlots";
+import AppointmentModal from "../appointment/AppointmentModal";
+import { isModel } from "../../../store/actions";
 function DocProfile() {
+  const dispatch = useDispatch();
+  const handleOpen = () => {
+    dispatch(isModel(true));
+  };
+  const modalShow = useSelector((s) => s.appointment.isModel);
+  console.log("isModelOpen", modalShow);
+
   const today = new Date();
   const date =
-    today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
+    today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+  console.log("todaydate", date);
   const [slots, setSlots] = useState(false);
-  const [todayDate, setTodayDate] = useState(date);
+  const [todayDate, setTodayDate] = useState("11/13/2021");
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const appointments = useSelector((s) => s.appointment.queryAppointment);
+
   const docDetail = async () => {
     dispatch(doctorDetail(id));
   };
   const doc = useSelector((s) => s.doctor.doctorDetail);
-  const appointments = useSelector((s) => s.appointment.todayAppointments);
+  // const fetchTodayAppointments = async () => {
+  //   console.log("today's date", todayDate);
 
-  console.log("today date", date);
-  const fetchTodayAppointments = async () => {
-    dispatch(todayAppointments(id, todayDate));
+  //   dispatch(queryAppointments(id, todayDate));
+  //   console.log("searching for today appointments", appointments);
+  // };
+  const searchAppointments = async () => {
+    console.log("searching for appointment slots on", todayDate);
+
+    dispatch(queryAppointments(id, todayDate));
+    console.log("search results for appointments", appointments);
   };
   useEffect(() => {
     docDetail();
-    fetchTodayAppointments();
+    searchAppointments();
   }, []);
   const openSlots = () => {
-    setSlots(true);
+    setSlots(!slots);
   };
   return (
     <div class="container mt-0">
@@ -102,34 +121,47 @@ function DocProfile() {
           <div class="col-md-8">
             <div class="card p-3 py-4">
               <div class="text-center">
-                {" "}
-                {/* <img src={doc.image} width="100" class="rounded-circle" />{" "} */}
                 <input
                   onChange={(e) => setTodayDate(e.target.value)}
                   class="bg-secondary p-2 m-1 px-4 rounded text-white"
                   value={todayDate}
                   type="date"
                 />
+                {/* <Calendar
+                  onChange={(e) => setTodayDate(e.target.value)}
+                  value={todayDate}
+                /> */}
                 <input
-                  onClick={fetchTodayAppointments}
+                  onClick={searchAppointments}
                   type="button"
                   value="Go"
                   class="bg-secondary p-2 m-1 px-4 rounded text-white"
                 />
               </div>
+
               <div class="row mt-4" style={{ marginLeft: "20px" }}>
                 {appointments.map((app) => (
-                  <Button className="col-md-2">
-                    {app.startTime}-{app.endTime}
-                  </Button>
+                  <>
+                    <Button
+                      onClick={handleOpen}
+                      key={app._id}
+                      className="col-md-2"
+                    >
+                      {app.startTime}-{app.endTime}
+                    </Button>{" "}
+                    {modalShow && (
+                      <AppointmentModal
+                        reload={searchAppointments}
+                        appointmentId={app._id}
+                      />
+                    )}
+                  </>
                 ))}
               </div>
             </div>
           </div>
         ) : (
-          <div className="col-md-8">
-            <h1> click on book appointment to access calender</h1>
-          </div>
+          <div className="col-md-8"></div>
         )}
       </div>
       <br />

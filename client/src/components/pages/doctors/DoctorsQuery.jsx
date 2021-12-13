@@ -10,15 +10,21 @@ function DoctorsQuery() {
         <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={doctor._id}>
           <div className="our-team">
             <div className="picture">
-              <Link to="/doc-profile">
+              <Link to={`/doc-profile/${doctor._id}`}>
                 <img className="img-fluid" src={doctor.image} />
               </Link>
             </div>
             <div className="team-content">
-              <h3 className="name">
-                {doctor.firstName} {doctor.lastName}
-              </h3>
-              <h4 className="title">{doctor.specialization}</h4>
+              <h4 className="name">
+                <b>
+                  {doctor.firstName} {doctor.lastName}
+                </b>
+              </h4>
+
+              <h4 className="title">
+                <b>{doctor.specialization}</b>
+              </h4>
+
               <br />
             </div>
             <ul className="social">

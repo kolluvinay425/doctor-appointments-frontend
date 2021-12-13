@@ -9,7 +9,7 @@ function HospitalQuery() {
         <>
           <div key={hospital._id} className="col-md-3">
             <div className="profile-card-2">
-              <Link to="/hospital">
+              <Link to={`/hospital/${hospital.name}`}>
                 <img src={hospital.image} className="img img-responsive" />
               </Link>
 
