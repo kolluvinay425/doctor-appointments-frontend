@@ -2,7 +2,7 @@ export const USER_LOGIN = "USER_LOGIN";
 export const IS_LOGGEDIN = "IS_LOGGEDIN";
 export const IS_BOOKED = "IS_BOOKED";
 export const IS_APP_BOOKED = "IS_APP_BOOKED";
-
+export const IS_DOC_LOGGEDIN = "IS_DOC_LOGGEDIN";
 export const SET_USER_INFO = "SET_USER_INFO";
 export const FETCH_HOSPITALS = "FETCH_HOSPITALS";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
@@ -10,6 +10,8 @@ export const FIND_HOS_DOCTORS = "FIND_HOS_DOCTORS";
 export const QUERY_HOSPITALS = "QUERY_HOSPITALS";
 export const QUERY_DOCTORS = "QUERY_DOCTORS";
 export const DOCTOR_DETAIL = "DOCTOR_DETAIL";
+export const SET_DOCTOR_INFO = "SET_DOCTOR_INFO";
+
 // export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
 export const IS_MODAL = "IS_MODAL";
@@ -160,5 +162,15 @@ export const setUserInfo = (userData) => {
   return {
     type: SET_USER_INFO,
     payload: userData,
+  };
+};
+export const isDocLoggedIn = (b) => ({
+  type: IS_DOC_LOGGEDIN,
+  payload: b,
+});
+export const setDoctorInfo = (docData) => {
+  return {
+    type: SET_DOCTOR_INFO,
+    payload: docData,
   };
 };

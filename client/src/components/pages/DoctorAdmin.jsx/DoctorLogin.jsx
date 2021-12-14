@@ -6,7 +6,7 @@ import { setDoctorInfo, isDocLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import API from "../../../helpers/apiFetches";
 import { getHospitals, doctorRegister } from "../../../helpers/apiFetches";
-import Signup from "./Signup";
+import DoctorSignup from "./SignUp";
 
 import "../../../styles/login.css";
 function DoctorLogin() {
