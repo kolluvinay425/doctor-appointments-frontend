@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { persistor, configureStore } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
+import Sidebar from "./components/pages/DoctorAdmin.jsx/Sidebar";
 function App() {
   return (
     <>
@@ -30,6 +31,9 @@ function App() {
                 <Route path="/hospital/:id" exact component={HospitLDetail} />
                 <Route path="/doc-profile/:id" exact component={DocProfile} />
                 <Route path="/user-profile" exact component={UserProfile} />
+                {/* Doctor admin routes */}
+                <Route path="/doctor/admin" exact component={Sidebar} />
+
                 <Route
                   path="/doctor-appointment/:idd"
                   exact
