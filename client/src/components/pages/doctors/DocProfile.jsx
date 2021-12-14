@@ -1,13 +1,10 @@
 import { React, useEffect, useState } from "react";
-import Calendar from "react-calendar";
 import { Button, Modal } from "react-bootstrap";
 import "../../../styles/docProfile.css";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { doctorDetail } from "../../../store/actions";
-import { Link } from "react-router-dom";
 import { queryAppointments } from "../../../store/actions";
-import DoctorAppointmentSlots from "../appointment/DoctorAppointmentSlots";
 import AppointmentModal from "../appointment/AppointmentModal";
 import { isModel } from "../../../store/actions";
 function DocProfile() {
@@ -20,13 +17,13 @@ function DocProfile() {
 
   const today = new Date();
   const date =
-    today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   console.log("todaydate", date);
   const [slots, setSlots] = useState(false);
-  const [todayDate, setTodayDate] = useState("11/13/2021");
+  const [todayDate, setTodayDate] = useState(date);
   const { id } = useParams();
   const appointments = useSelector((s) => s.appointment.queryAppointment);
-
+  const emptyAppointments = appointments.length === 0;
   const docDetail = async () => {
     dispatch(doctorDetail(id));
   };
@@ -56,7 +53,7 @@ function DocProfile() {
       <br />
       <br />
       <div class="row d-flex ">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <div class="card p-3 py-4">
             <div class="text-center">
               {" "}
@@ -118,7 +115,7 @@ function DocProfile() {
           </div>
         </div>
         {slots ? (
-          <div class="col-md-8">
+          <div class="col-md-7">
             <div class="card p-3 py-4">
               <div class="text-center">
                 <input
@@ -140,23 +137,27 @@ function DocProfile() {
               </div>
 
               <div class="row mt-4" style={{ marginLeft: "20px" }}>
-                {appointments.map((app) => (
-                  <>
-                    <Button
-                      onClick={handleOpen}
-                      key={app._id}
-                      className="col-md-2"
-                    >
-                      {app.startTime}-{app.endTime}
-                    </Button>{" "}
-                    {modalShow && (
-                      <AppointmentModal
-                        reload={searchAppointments}
-                        appointmentId={app._id}
-                      />
-                    )}
-                  </>
-                ))}
+                {emptyAppointments ? (
+                  <h5>No Appointments Found</h5>
+                ) : (
+                  appointments.map((app) => (
+                    <>
+                      <Button
+                        onClick={handleOpen}
+                        key={app._id}
+                        className="col-md-2"
+                      >
+                        {app.startTime}-{app.endTime}
+                      </Button>{" "}
+                      {modalShow && (
+                        <AppointmentModal
+                          reload={searchAppointments}
+                          appointmentId={app._id}
+                        />
+                      )}
+                    </>
+                  ))
+                )}
               </div>
             </div>
           </div>

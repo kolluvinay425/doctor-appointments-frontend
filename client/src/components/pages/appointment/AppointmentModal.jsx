@@ -1,37 +1,40 @@
-import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal, Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { isModel } from "../../../store/actions";
 import { postAppointment } from "../../../helpers/appointment";
 import API from "../../../helpers/apiFetches";
 function AppointmentModal({ appointmentId, reload }) {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const isModelOpen = useSelector((s) => s.appointment.isModel);
-
-  // const handleAppointmentPost = async () => {
-  //   console.log("post appointment---->", appointmentId);
-
-  //   const resp = await postAppointment(appointmentId);
-  //   handleClose();
-  // };
-  const handleAppointmentPost = async () => {
-    try {
-      const { data } = await API.post(`/appointment/${appointmentId}`, {
-        method: "POST",
-      });
-      if (data) {
-        console.log("app post responce", data);
-        handleClose();
-        reload();
-      }
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
   const handleClose = () => {
     dispatch(isModel(false));
   };
+  const user = useSelector((s) => s.user.isLoggedIn);
+  const check = user === false;
+  const handleAppointmentPost = async () => {
+    if (check) {
+      handleClose();
+      console.log("please log in to book an appointment");
+    } else
+      try {
+        setIsLoading(true);
+
+        const { data } = await API.post(`/appointment/${appointmentId}`, {
+          method: "POST",
+        });
+        if (data) {
+          console.log("app post responce", data);
+          setIsLoading(false);
+          handleClose();
+          reload();
+        }
+      } catch (error) {
+        console.log("error", error);
+      }
+  };
+
   return (
     <Modal
       show={isModelOpen}
@@ -42,6 +45,11 @@ function AppointmentModal({ appointmentId, reload }) {
       <Modal.Header closeButton={false}>
         <Modal.Title id="contained-modal-title-vcenter">
           Modal heading
+          {isLoading && (
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          )}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

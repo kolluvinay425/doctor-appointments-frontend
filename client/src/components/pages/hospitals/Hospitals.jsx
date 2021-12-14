@@ -10,6 +10,7 @@ function Hospital() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const hospitalQuery = useSelector((s) => s.hospitals.queryData);
+  const check = hospitalQuery.length > 0;
 
   const searchHospital = async (event) => {
     event.preventDefault();
@@ -60,13 +61,14 @@ function Hospital() {
       </div>
       <div className="container">
         <div className="row">
-          {hospitalQuery && (
+          {check ? (
             <>
               <h5>search results</h5>
               <HospitalQuery />
             </>
+          ) : (
+            <HospitalList />
           )}
-          <HospitalList />
         </div>
       </div>
     </>

@@ -9,6 +9,8 @@ function Doctor() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const doctorQuery = useSelector((s) => s.doctor.queryData);
+  const check = doctorQuery.length > 0;
+
   const searchDoctor = async (event) => {
     event.preventDefault();
 
@@ -17,7 +19,7 @@ function Doctor() {
 
   const getDoctors = async () => {
     try {
-      const resp = await fetch("http://localhost:3001/doctor/");
+      const resp = await fetch("http://localhost:3001/doctor");
       if (resp) {
         const data = await resp.json();
         console.log("doctors-------->", data);
@@ -57,13 +59,14 @@ function Doctor() {
       </div>
       <div className="container">
         <div className="row">
-          {doctorQuery && (
+          {check ? (
             <>
               <h5>search results</h5>
               <DoctorsQuery />
             </>
+          ) : (
+            <DoctorsList />
           )}
-          <DoctorsList />
         </div>
       </div>
     </>
