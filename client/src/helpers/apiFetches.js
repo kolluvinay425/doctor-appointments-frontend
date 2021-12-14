@@ -49,5 +49,13 @@ API.interceptors.response.use(
     }
   }
 );
-
+export const getHospitals = async () => {
+  try {
+    const resp = await fetch("http://localhost:3001/hospital/doctors");
+    if (resp) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (error) {}
+};
 export default API;
