@@ -58,4 +58,20 @@ export const getHospitals = async () => {
     }
   } catch (error) {}
 };
+export const doctorRegister = async (data) => {
+  console.log("daaaa", data.firstName);
+  try {
+    const resp = await fetch("http://localhost:3001/doctor/register", {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringiffy(data),
+    });
+    if (resp) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (error) {}
+};
 export default API;
