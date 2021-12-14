@@ -10,6 +10,7 @@ import Login from "./components/pages/user/Login";
 import CarouselSlide from "./components/CarouselSlide";
 import Hospital from "./components/pages/hospitals/Hospitals";
 import HospitLDetail from "./components/pages/hospitals/HospitalDetail";
+import DoctorLogin from "./components/pages/DoctorAdmin.jsx/DoctorLogin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { persistor, configureStore } from "./store";
@@ -31,6 +32,8 @@ function App() {
                 <Route path="/hospital/:id" exact component={HospitLDetail} />
                 <Route path="/doc-profile/:id" exact component={DocProfile} />
                 <Route path="/user-profile" exact component={UserProfile} />
+                <Route path="/doctor-login" exact component={DoctorLogin} />
+
                 {/* Doctor admin routes */}
                 <Route path="/doctor/admin" exact component={Sidebar} />
 
