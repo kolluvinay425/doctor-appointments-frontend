@@ -1,5 +1,8 @@
 export const USER_LOGIN = "USER_LOGIN";
 export const IS_LOGGEDIN = "IS_LOGGEDIN";
+export const IS_BOOKED = "IS_BOOKED";
+export const IS_APP_BOOKED = "IS_APP_BOOKED";
+
 export const SET_USER_INFO = "SET_USER_INFO";
 export const FETCH_HOSPITALS = "FETCH_HOSPITALS";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
@@ -134,6 +137,14 @@ export const fetchDoctors = (data) => ({
 });
 export const isLoggedIn = (boolean) => ({
   type: IS_LOGGEDIN,
+  payload: boolean,
+});
+export const loginAlert = (boolean) => ({
+  type: IS_BOOKED,
+  payload: boolean,
+});
+export const bookingAlert = (boolean) => ({
+  type: IS_APP_BOOKED,
   payload: boolean,
 });
 export const isModel = (boolean) => ({

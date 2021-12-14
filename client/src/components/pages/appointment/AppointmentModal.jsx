@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { isModel } from "../../../store/actions";
-import { postAppointment } from "../../../helpers/appointment";
+import { bookingAlert, isModel } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
+import { useHistory } from "react-router";
+import { loginAlert } from "../../../store/actions";
 function AppointmentModal({ appointmentId, reload }) {
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const isModelOpen = useSelector((s) => s.appointment.isModel);
+
   const handleClose = () => {
     dispatch(isModel(false));
   };
+  const history = useHistory();
+
   const user = useSelector((s) => s.user.isLoggedIn);
-  const check = user === false;
+  console.log("userrrr", user);
   const handleAppointmentPost = async () => {
-    if (check) {
+    if (!user) {
       handleClose();
+      dispatch(loginAlert(true));
+      setTimeout(() => {
+        dispatch(loginAlert(false));
+      }, 5000);
+      history.push("/authenticate");
       console.log("please log in to book an appointment");
-    } else
+    } else {
       try {
         setIsLoading(true);
 
@@ -28,11 +37,16 @@ function AppointmentModal({ appointmentId, reload }) {
           console.log("app post responce", data);
           setIsLoading(false);
           handleClose();
+          dispatch(bookingAlert(true));
+          setTimeout(() => {
+            dispatch(bookingAlert(false));
+          }, 5000);
           reload();
         }
       } catch (error) {
         console.log("error", error);
       }
+    }
   };
 
   return (

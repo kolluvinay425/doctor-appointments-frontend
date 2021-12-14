@@ -7,6 +7,9 @@ function DoctorsList() {
   console.log("redux doctor data", doctorQuery);
   return (
     <div className="row">
+      <br />
+      <br />
+      <br />
       {doctorQuery?.map((doctor) => (
         <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3">
           <div className="our-team">

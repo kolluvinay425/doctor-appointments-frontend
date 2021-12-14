@@ -5,10 +5,24 @@ function CarouselSlide() {
   return (
     <div class="hero-image">
       <div class="hero-text">
-        <h1 style={{ fontSize: "35px", fontFamily: "sans-serif" }}>
-          Booking Doctor Appointment <br /> Becomes Easier!
+        <h1
+          style={{
+            fontSize: "35px",
+            fontFamily: "inherit",
+            textShadow: "2px 2px black",
+          }}
+        >
+          <b>Booking Doctor Appointment</b> <br /> <b>Becomes Easier!</b>
         </h1>
-        <h3>Book your Doctor Now</h3>
+        <h3
+          style={{
+            fontSize: "25px",
+            fontFamily: "inherit",
+            textShadow: "2px 2px black",
+          }}
+        >
+          <b>Book your Doctor Now</b>{" "}
+        </h3>
         <Link
           to="hospitals"
           class="btn btn-outline-light btn-lg m-2"
@@ -16,7 +30,7 @@ function CarouselSlide() {
           rel="nofollow"
           id="home-btns"
         >
-          Find Hospitals
+          <b>Find Hospitals</b>
         </Link>
         <Link
           to="doctors"
@@ -24,7 +38,7 @@ function CarouselSlide() {
           role="button"
           id="home-btns"
         >
-          Find Doctor
+          <b> Find Doctor</b>
         </Link>
       </div>
     </div>

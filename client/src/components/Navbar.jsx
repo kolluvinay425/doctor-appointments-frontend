@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { isLoggedIn, setUserInfo } from "../store/actions";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { Alert } from "react-bootstrap";
 import "../styles/carousel.css";
 
 import {
@@ -26,8 +27,11 @@ function NavBar() {
     dispatch(setUserInfo(data));
     history.push("/");
   };
+
   const isUserLoddedIn = useSelector((s) => s.user);
-  console.log("cfrom nav component", isUserLoddedIn);
+  const loginAlert = useSelector((s) => s.appointment.isBooked);
+  const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
+
   return (
     <>
       <Nav>
@@ -82,6 +86,16 @@ function NavBar() {
           </NavBtn>
         )}
       </Nav>
+      {loginAlert && (
+        <Alert variant="info">
+          Please login to book appointment with doctor
+        </Alert>
+      )}
+      {bookingAlert && (
+        <Alert variant="success">
+          appointment booked successfully check your email for conformation
+        </Alert>
+      )}
     </>
   );
 }

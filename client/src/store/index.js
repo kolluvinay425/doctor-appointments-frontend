@@ -18,8 +18,9 @@ export const initialState = {
     queryData: [],
   },
   appointments: {
-    isBooked: false,
+    isLoggedIn: false,
     isModel: false,
+    isAppointmentBooked: false,
     todayAppointments: [],
     queryAppointment: [],
   },

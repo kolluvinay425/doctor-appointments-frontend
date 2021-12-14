@@ -52,6 +52,7 @@ function DocProfile() {
       <br />
       <br />
       <br />
+
       <div class="row d-flex ">
         <div class="col-md-5">
           <div class="card p-3 py-4">
@@ -120,6 +121,7 @@ function DocProfile() {
               <div class="text-center">
                 <input
                   onChange={(e) => setTodayDate(e.target.value)}
+                  //onKeyUp={searchAppointments}
                   class="bg-secondary p-2 m-1 px-4 rounded text-white"
                   value={todayDate}
                   type="date"

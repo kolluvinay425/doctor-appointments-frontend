@@ -1,8 +1,9 @@
 import { React, useState } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
-import { setUserInfo, isLoggedIn } from "../../../store/actions";
+import { setUserInfo, isLoggedIn, isAlert } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { loginAlert } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
 export const URL = create({ baseURL: "http://localhost:3001" });
@@ -47,6 +48,7 @@ function Login() {
       const { data } = await API.get("/user/me");
       console.log("me", data);
       if (data) {
+        dispatch(loginAlert(false));
         dispatch(setUserInfo(data));
         dispatch(isLoggedIn(b));
         history.push("/");
@@ -58,6 +60,9 @@ function Login() {
     }
   };
 
+  // setTimeout(() => {
+  //   dispatch(loginAlert(true));
+  // }, 5000);
   //..........userToggle.......
   const toggleAuth = () => {
     console.log("clicked");

@@ -1,5 +1,10 @@
 import { initialState } from "..";
-import { QUERY_APPOINTMENTS, IS_MODAL } from "../actions";
+import {
+  QUERY_APPOINTMENTS,
+  IS_MODAL,
+  IS_BOOKED,
+  IS_APP_BOOKED,
+} from "../actions";
 
 export const appointmentReducer = (
   state = initialState.appointments,
@@ -16,6 +21,16 @@ export const appointmentReducer = (
       return {
         ...state,
         isModel: payload,
+      };
+    case IS_BOOKED:
+      return {
+        ...state,
+        isBooked: payload,
+      };
+    case IS_APP_BOOKED:
+      return {
+        ...state,
+        isAppointmentBooked: payload,
       };
     default:
       return state;
