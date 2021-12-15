@@ -4,7 +4,7 @@ import { useHistory } from "react-router";
 import { setUserInfo, isLoggedIn } from "../../../store/actions";
 import { setDoctorInfo, isDocLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
-import API from "../../../helpers/apiFetches";
+import API from "../../../helpers/doctorAuth";
 import { getHospitals, doctorRegister } from "../../../helpers/apiFetches";
 import DoctorSignup from "./SignUp";
 
@@ -22,7 +22,7 @@ function DoctorLogin() {
   // const path = history.location.pathname;
   // console.log("path!!", path);
   const data = useSelector((s) => s.doctor);
-  console.log("current redux data", data);
+  // console.log("current redux data", data);
   const b = true;
   const login = async () => {
     const email = userCreds.email;
@@ -48,17 +48,17 @@ function DoctorLogin() {
 
   const getUserInfo = async () => {
     try {
-      const { data } = await API.get("/doctor/");
+      const { data } = await API.get("/doctor");
       console.log("doctor", data);
       if (data) {
         dispatch(setDoctorInfo(data));
         dispatch(isDocLoggedIn(b));
-        history.push("/");
+        history.push("/doctor/admin");
       } else {
         console.log("enter password or email corretly");
       }
     } catch (error) {
-      console.log("enter password or email corretly");
+      console.log(error);
     }
   };
 
@@ -67,14 +67,6 @@ function DoctorLogin() {
     console.log("clicked");
     setIsActive(!isActive);
   };
-  useEffect(() => {
-    const gethospitalNames = async (event) => {
-      const data = await getHospitals();
-      setHnames(data);
-      console.log("hospitalsss", data);
-    };
-    gethospitalNames();
-  }, []);
 
   return (
     <>
@@ -125,7 +117,7 @@ function DoctorLogin() {
                 aria-labelledby="home-tab"
               >
                 {isActive ? (
-                  <Signup />
+                  <DoctorSignup />
                 ) : (
                   <>
                     <h3 className="register-heading">Log in</h3>

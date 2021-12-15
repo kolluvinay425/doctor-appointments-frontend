@@ -1,4 +1,7 @@
 import { React, useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { getHospitals } from "../../../helpers/doctorAuth";
+import { useSelector } from "react-redux";
 function DoctorSignup() {
   const [hnames, setHnames] = useState([]);
 
@@ -11,6 +14,8 @@ function DoctorSignup() {
     hospital: "",
     password: "",
   });
+  const data = useSelector((s) => s.doctor.DoctorInfo);
+  const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,10 +31,18 @@ function DoctorSignup() {
       if (resp) {
         const data = await resp.json();
         console.log(data);
-        history.push("/authenticate");
+        history.push("");
       }
     } catch (error) {}
   };
+  useEffect(() => {
+    const gethospitalNames = async (event) => {
+      const data = await getHospitals();
+      setHnames(data);
+      console.log("hospitalsss", data);
+    };
+    gethospitalNames();
+  }, []);
   return (
     <div>
       <>
