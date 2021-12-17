@@ -20,10 +20,13 @@ function DocNavbar() {
   //   const b = false;
   //   const data = [];
   const logout = () => {
-    localStorage.clear();
+    //localStorage.clear();
+    localStorage.removeItem("DocaccessToken");
+    localStorage.removeItem("DocrefreshToken");
+
     dispatch(isDocLoggedIn(false));
     dispatch(setDoctorInfo([]));
-    history.push("/");
+    history.push("/doctor-admin");
   };
 
   const isDocLoddedIn = useSelector((s) => s.doctor);

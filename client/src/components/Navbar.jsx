@@ -23,7 +23,10 @@ function NavBar() {
   const b = false;
   const data = [];
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+
+    //localStorage.clear();
     dispatch(isLoggedIn(b));
     dispatch(setUserInfo(data));
     history.push("/");

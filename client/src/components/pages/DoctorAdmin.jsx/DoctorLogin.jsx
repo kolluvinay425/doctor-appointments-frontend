@@ -35,8 +35,8 @@ function DoctorLogin() {
       );
       console.log("Tokens", data);
       if (data) {
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
+        localStorage.setItem("DocaccessToken", data.accessToken);
+        localStorage.setItem("DocrefreshToken", data.refreshToken);
       } else {
       }
     } catch (error) {

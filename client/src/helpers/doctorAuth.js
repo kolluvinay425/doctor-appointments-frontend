@@ -4,26 +4,26 @@ const API = create({ baseURL: "http://localhost:3001" });
 
 const refreshAccessToken = async () => {
   const { data } = await API.post("/doctor/login", {
-    actualRefreshToken: localStorage.getItem("refreshToken"),
+    actualRefreshToken: localStorage.getItem("DocrefreshToken"),
   });
-  localStorage.setItem("accessToken", data.accessToken);
-  localStorage.setItem("refreshToken", data.refreshToken);
+  localStorage.setItem("DocaccessToken", data.accessToken);
+  localStorage.setItem("DocrefreshToken", data.refreshToken);
   return data;
 };
 
 const registerTokens = async () => {
   const { data } = await API.post("/doctor/login", {
-    actualAcessToken: localStorage.getItem("accessToken"),
-    actualRefreshToken: localStorage.getItem("refreshToken"),
+    actualAcessToken: localStorage.getItem("DocaccessToken"),
+    actualRefreshToken: localStorage.getItem("DocrefreshToken"),
   });
-  localStorage.setItem("accessToken", data.accessToken);
-  localStorage.setItem("refreshToken", data.refreshToken);
+  localStorage.setItem("DocaccessToken", data.accessToken);
+  localStorage.setItem("DocrefreshToken", data.refreshToken);
   return data;
 };
 
 API.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("DocaccessToken");
     config.headers = {
       Authorization: accessToken ? `Bearer ${accessToken}` : undefined,
       "Content-Type": "application/json",
