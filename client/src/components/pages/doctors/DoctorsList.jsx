@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 function DoctorsList() {
   const doctorQuery = useSelector((s) => s.doctor.data);
-
+  //console - log("doctorsList", data);
   console.log("redux doctor data", doctorQuery);
   return (
     <div className="row">

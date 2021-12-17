@@ -62,7 +62,7 @@ function DocProfile() {
             </div>
             <div class="text-center mt-3">
               {" "}
-              <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+              <span class="bg-secondary p-1 px-4 rounded text-white">MBBS</span>
               <h5 class="mt-2 mb-0">
                 {doc.firstName} {doc.lastName}
               </h5>{" "}

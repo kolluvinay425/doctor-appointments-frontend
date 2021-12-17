@@ -11,32 +11,16 @@ export const QUERY_HOSPITALS = "QUERY_HOSPITALS";
 export const QUERY_DOCTORS = "QUERY_DOCTORS";
 export const DOCTOR_DETAIL = "DOCTOR_DETAIL";
 export const SET_DOCTOR_INFO = "SET_DOCTOR_INFO";
-
+export const GET_DOCTOR_QUERY_APPOINTMENTS = "GET_DOCTOR_QUERY_APPOINTMENTS";
 // export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
 export const IS_MODAL = "IS_MODAL";
 const url = "http://localhost:3001";
+export const doctorSearchQuery = (data) => ({
+  type: GET_DOCTOR_QUERY_APPOINTMENTS,
+  payload: data,
+});
 
-// export const todayAppointments = (docId, date) => {
-//   return async (dispatch) => {
-//     try {
-//       let resp = await fetch(`${url}/appointment?docId=${docId}&date=${date}`);
-//       if (resp.ok) {
-//         const data = await resp.json();
-
-//         dispatch({
-//           type: TODAY_APPOINTMENTS,
-//           payload: data,
-//         });
-//         //console.log("TODAY_APPOINTMENTS", data);
-//       } else {
-//         console.log("error");
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
 export const queryAppointments = (docId, date) => {
   return async (dispatch) => {
     try {

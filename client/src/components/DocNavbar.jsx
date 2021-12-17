@@ -1,13 +1,10 @@
 import React from "react";
-import { MdMedicalServices } from "react-icons/md";
-import { NavLink as Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { isLoggedIn, setUserInfo } from "../store/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { isDocLoggedIn } from "../store/actions";
+import { setDoctorInfo } from "../store/actions";
 import { useHistory } from "react-router";
-import { Alert } from "react-bootstrap";
-
-import "../styles/carousel.css";
+import { Link } from "react-router-dom";
+import { MdMedicalServices } from "react-icons/md";
 
 import {
   Nav,
@@ -16,25 +13,25 @@ import {
   NavMenu,
   NavBtn,
   NavBtnLink,
-} from "../helpers/NavbarElements";
-function NavBar() {
+} from "../helpers/DocNavbar";
+function DocNavbar() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const b = false;
-  const data = [];
+  //   const b = false;
+  //   const data = [];
   const logout = () => {
     localStorage.clear();
-    dispatch(isLoggedIn(b));
-    dispatch(setUserInfo(data));
+    dispatch(isDocLoggedIn(false));
+    dispatch(setDoctorInfo([]));
     history.push("/");
   };
 
-  const isUserLoddedIn = useSelector((s) => s.user);
-  const loginAlert = useSelector((s) => s.appointment.isBooked);
-  const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
-
+  const isDocLoddedIn = useSelector((s) => s.doctor);
+  console.log("doctor info", isDocLoddedIn.DoctorInfo);
+  const loginAlert = useSelector((s) => s.doctor.isPosted);
+  //const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
   return (
-    <>
+    <div>
       <Nav>
         <Link to="/">
           <h1 style={{ color: "white", curser: "pointer", fontSize: "40px" }}>
@@ -52,8 +49,13 @@ function NavBar() {
           <NavLink to="/contact-us" activeStyle>
             <b>Contact Us</b>
           </NavLink>
-          {isUserLoddedIn.isLoggedIn ? (
-            <NavLink to="" onClick={logout} activeStyle>
+          {isDocLoddedIn.isDocLoggedIn ? (
+            <NavLink
+              style={{ color: "white" }}
+              to=""
+              onClick={logout}
+              activeStyle
+            >
               <b>Log Out</b>
             </NavLink>
           ) : (
@@ -63,7 +65,7 @@ function NavBar() {
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
-        {isUserLoddedIn.isLoggedIn ? (
+        {isDocLoddedIn.isDocLoggedIn ? (
           <>
             <NavBtn>
               <Link to="user-profile">
@@ -73,7 +75,7 @@ function NavBar() {
                     maxWidth: "35px",
                     cursor: "pointer",
                   }}
-                  src={isUserLoddedIn.data.image}
+                  src={isDocLoddedIn.DoctorInfo.image}
                   alt=""
                 />
               </Link>
@@ -81,14 +83,14 @@ function NavBar() {
           </>
         ) : (
           <NavBtn>
-            <NavBtnLink to="/authenticate">
-              <b>Register / Login</b>{" "}
+            <NavBtnLink to="/doctor-login">
+              <b>SignUp / Login</b>{" "}
             </NavBtnLink>
           </NavBtn>
         )}
       </Nav>
-      {loginAlert && (
-        <Alert style={{ height: "150px" }} variant="info">
+      {/* {loginAlert && (
+        <Alert variant="info">
           Please login to book appointment with doctor
         </Alert>
       )}
@@ -96,9 +98,9 @@ function NavBar() {
         <Alert variant="success">
           appointment booked successfully check your email for conformation
         </Alert>
-      )}
-    </>
+      )} */}
+    </div>
   );
 }
 
-export default NavBar;
+export default DocNavbar;

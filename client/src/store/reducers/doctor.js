@@ -5,6 +5,7 @@ import {
   QUERY_DOCTORS,
   IS_DOC_LOGGEDIN,
   SET_DOCTOR_INFO,
+  GET_DOCTOR_QUERY_APPOINTMENTS,
 } from "../actions";
 import { initialState } from "..";
 
@@ -16,10 +17,15 @@ export const doctorReducer = (state = initialState.doctor, action) => {
         ...state,
         data: payload,
       };
-    case QUERY_DOCTORS:
+    case GET_DOCTOR_QUERY_APPOINTMENTS:
       return {
         ...state,
         queryData: payload,
+      };
+    case QUERY_DOCTORS:
+      return {
+        ...state,
+        data: payload,
       };
     case FIND_HOS_DOCTORS:
       return {

@@ -78,4 +78,19 @@ export const doctorRegister = async (data) => {
     }
   } catch (error) {}
 };
+
+export const getDoctorInfo = async () => {
+  try {
+    const { data } = await API.get("/doctor/profile/d");
+    console.log("doctor", data);
+    if (data) {
+      return data;
+    } else {
+      console.log("enter password or email corretly");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export default API;

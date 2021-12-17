@@ -1,19 +1,44 @@
 import { React, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
+import { create } from "axios";
+import API from "../../../helpers/doctorAuth";
+
 import { queryAppointments } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { FaHtml5 } from "react-icons/fa";
 function PostAppointmnet() {
   const today = new Date();
   const todayDatee =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  const [date, setDate] = useState(todayDatee);
-  const [startTime, setStartTime] = useState("09:00");
-  const [endTime, setEndTime] = useState("10:00");
+  const [datee, setDate] = useState(todayDatee);
+  const [startTimee, setStartTime] = useState("09:00");
+  const [endTimee, setEndTime] = useState("10:00");
+  const [isPosted, setIsPosted] = useState(false);
   const dispatch = useDispatch();
-  const handleSubmit = async () => {
+  const URL = create({ baseURL: "http://localhost:3001" });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      dispatch(queryAppointments());
-    } catch (error) {}
+      const date = datee;
+      const startTime = startTimee;
+      const endTime = endTimee;
+      const { data } = await API.post(
+        "/doctor/new",
+        { date, startTime, endTime },
+        { method: "POST" }
+      );
+      if (data) {
+        console.log("POST APP", data);
+        setIsPosted(true);
+        setTimeout(() => {
+          setIsPosted(false);
+        }, 5000);
+      } else {
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
   return (
     <>
@@ -28,7 +53,7 @@ function PostAppointmnet() {
                 <Form.Label>Date:</Form.Label>
                 <Form.Control
                   onChange={(e) => setDate(e.target.value)}
-                  value={date}
+                  value={datee}
                   type="date"
                   placeholder="Enter email"
                 />
@@ -38,7 +63,7 @@ function PostAppointmnet() {
 
                 <Form.Control
                   onChange={(e) => setStartTime(e.target.value)}
-                  value={startTime}
+                  value={startTimee}
                   type="time"
                   placeholder="Password"
                 />
@@ -47,7 +72,7 @@ function PostAppointmnet() {
                 <Form.Label>End Time:</Form.Label>
                 <Form.Control
                   onChange={(e) => setEndTime(e.target.value)}
-                  value={endTime}
+                  value={endTimee}
                   type="time"
                   placeholder="Password"
                 />
@@ -57,6 +82,11 @@ function PostAppointmnet() {
               </Button>
             </Form>
           </div>
+        </div>
+        <div className="col-7">
+          {isPosted && (
+            <Alert variant="success">appointment slot saved successfully</Alert>
+          )}
         </div>
         {/* <div className="col-md-8">
           find Appointments

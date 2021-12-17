@@ -1,11 +1,10 @@
 import { React, useState, useEffect } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
-import { setUserInfo, isLoggedIn } from "../../../store/actions";
 import { setDoctorInfo, isDocLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import API from "../../../helpers/doctorAuth";
-import { getHospitals, doctorRegister } from "../../../helpers/apiFetches";
+
 import DoctorSignup from "./SignUp";
 
 import "../../../styles/login.css";
@@ -27,6 +26,7 @@ function DoctorLogin() {
   const login = async () => {
     const email = userCreds.email;
     const password = userCreds.password;
+
     try {
       const { data } = await URL.post(
         "/doctor/login",
@@ -48,7 +48,7 @@ function DoctorLogin() {
 
   const getUserInfo = async () => {
     try {
-      const { data } = await API.get("/doctor");
+      const { data } = await API.get("/doctor/profile/d");
       console.log("doctor", data);
       if (data) {
         dispatch(setDoctorInfo(data));

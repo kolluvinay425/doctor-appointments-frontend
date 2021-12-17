@@ -16,13 +16,32 @@ import { Provider } from "react-redux";
 import { persistor, configureStore } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
 import Sidebar from "./components/pages/DoctorAdmin.jsx/Sidebar";
+import DocNavbar from "./components/DocNavbar";
 function App() {
   return (
     <>
       <Provider store={configureStore}>
         <PersistGate persistor={persistor} loading={null}>
+          {/* <Router>
+            {/* <div>
+              <DocNavbar />
+              <Switch>
+                <Route path="/doctor/admin" exact component={Sidebar} />
+                <Route path="/doctor-login" exact component={DoctorLogin} />
+              </Switch>
+
+              <Footer />
+            </div> */}
+          {/* </Router> */}
           <Router>
-            <NavBar />
+            <Route path="/" exact component={NavBar} />
+            <Route path="/hospitals" exact component={NavBar} />
+            <Route path="/doctors" exact component={NavBar} />
+            <Route path="/user-profile" exact component={NavBar} />
+            <Route path="/authenticate" exact component={NavBar} />
+            <Route path="/doc-profile/:id" exact component={NavBar} />
+            <Route path="/hospital/:id" exact component={NavBar} />
+
             <Switch>
               <div style={{ backgroundColor: "rgb(216 222 233)" }}>
                 <Route path="/" exact component={CarouselSlide} />
@@ -32,10 +51,13 @@ function App() {
                 <Route path="/hospital/:id" exact component={HospitLDetail} />
                 <Route path="/doc-profile/:id" exact component={DocProfile} />
                 <Route path="/user-profile" exact component={UserProfile} />
-                <Route path="/doctor-login" exact component={DoctorLogin} />
 
                 {/* Doctor admin routes */}
+                <Route path="/doctor/admin" exact component={DocNavbar} />
+                <Route path="/doctor-login" exact component={DocNavbar} />
+
                 <Route path="/doctor/admin" exact component={Sidebar} />
+                <Route path="/doctor-login" exact component={DoctorLogin} />
 
                 <Route
                   path="/doctor-appointment/:idd"

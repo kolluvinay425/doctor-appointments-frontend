@@ -25,6 +25,7 @@ export const initialState = {
     queryAppointment: [],
   },
   doctor: {
+    doctorQuery: [],
     isDocLoggedIn: false,
     data: [],
     DoctorInfo: [],

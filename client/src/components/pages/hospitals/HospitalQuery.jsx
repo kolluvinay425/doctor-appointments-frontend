@@ -13,7 +13,7 @@ function HospitalQuery() {
                 <img src={hospital.image} className="img img-responsive" />
               </Link>
 
-              <div className="profile-name"> {hospital.name}</div>
+              <div className="profile-name"> {hospital.name} </div>
               <div className="profile-username">@{hospital.location}</div>
               <div className="profile-icons m-1">
                 <a href="#">

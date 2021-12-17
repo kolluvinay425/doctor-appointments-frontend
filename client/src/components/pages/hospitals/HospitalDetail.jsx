@@ -45,7 +45,7 @@ function HospitLDetail() {
                 </div>
                 <div className="team-content">
                   <h4 className="name">
-                    {doc.firstname} {doc.lastName}
+                    {doc.firstName} {doc.lastName}
                   </h4>
                   <h4 className="title">{doc.specialization}</h4>
                   <br />
