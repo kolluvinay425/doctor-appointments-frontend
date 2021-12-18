@@ -85,11 +85,12 @@ function AppointmentModal({ appointmentId, reload }) {
               </i>
             </h4>
             <h4>
-              Booking Date: <i>{todayDate}</i>
-            </h4>
-            <h4>
               Appointment Date: <i>{date}</i>{" "}
             </h4>
+            <h4>
+              Start Time: <i>{appointmentId.startTime}</i>
+            </h4>
+
             {/* <h4>Start Time: {appointmentId.startTime}</h4> */}
             <h4>
               end Time: <i>{appointmentId.endTime}</i>

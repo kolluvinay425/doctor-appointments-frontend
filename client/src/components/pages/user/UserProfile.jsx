@@ -5,7 +5,7 @@ import "../../../styles/userProfile.css";
 function UserProfile() {
   const userProfile = useSelector((user) => user.user);
   return (
-    <div>
+    <div style={{ height: "100vh" }}>
       <br />
       <br />
       <br />
