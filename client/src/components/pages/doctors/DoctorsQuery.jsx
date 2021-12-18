@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function DoctorsQuery() {
   const doctorQuery = useSelector((s) => s.doctor.queryData);
   return (
-    <div className="row">
+    <div className="row" style={{ height: "100vh" }}>
       {doctorQuery.map((doctor) => (
         <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={doctor._id}>
           <div className="our-team">

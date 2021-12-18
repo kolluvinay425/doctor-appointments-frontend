@@ -7,14 +7,8 @@ function HospitalList() {
   //   console.log("id", id);
   return (
     <>
-      <div className="row">
-        <br />
-        <br />
-        <br />
-        <br />
+      <div className="row" style={{ height: "100vh" }}>
         <h4 className="text-center">
-          <br />
-
           <strong>Hospitals near You</strong>
         </h4>
         <hr />
@@ -28,7 +22,7 @@ function HospitalList() {
 
                 <div className="profile-name"> {hospital.name}</div>
                 <div className="profile-username">@{hospital.location}</div>
-                <div className="profile-icons m-1">
+                {/* <div className="profile-icons m-1">
                   <a href="#">
                     <i className="bi bi-facebook "></i>
                   </a>
@@ -40,7 +34,7 @@ function HospitalList() {
                   <a href="#">
                     <i className="bi bi-linkedin"></i>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </>

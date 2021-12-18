@@ -53,7 +53,7 @@ function DocProfile() {
       <br />
       <br />
 
-      <div class="row d-flex ">
+      <div class="row d-flex " style={{ height: "100vh" }}>
         <div class="col-md-5">
           <div class="card p-3 py-4">
             <div class="text-center">
@@ -62,11 +62,19 @@ function DocProfile() {
             </div>
             <div class="text-center mt-3">
               {" "}
-              <span class="bg-secondary p-1 px-4 rounded text-white">MBBS</span>
+              <span class="bg-secondary p-1 px-4 rounded text-white">
+                {" "}
+                <b>MBBS</b>{" "}
+              </span>
               <h5 class="mt-2 mb-0">
-                {doc.firstName} {doc.lastName}
+                <b>
+                  {doc.firstName} {doc.lastName}
+                </b>
               </h5>{" "}
-              <span>{doc.specialization}</span>
+              <span>
+                {" "}
+                <b>{doc.specialization}</b>{" "}
+              </span>
               <div class="px-4 mt-1">
                 <p class="fonts">
                   Consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -97,7 +105,8 @@ function DocProfile() {
                 <input
                   type="button"
                   value="Message"
-                  class="btn btn-outline-primary px-4"
+                  class="btn btn-primary px-4 ms-3"
+                  style={{ backgroundColor: "#145da0" }}
                 />
                 {/* <Link
                   //to={`/doctor-appointment/${id}`}
@@ -109,6 +118,7 @@ function DocProfile() {
                   type="button"
                   value="Book Appointment"
                   class="btn btn-primary px-4 ms-3"
+                  style={{ backgroundColor: "#145da0" }}
                 />
                 {/* </Link> */}
               </div>
@@ -121,7 +131,6 @@ function DocProfile() {
               <div class="text-center">
                 <input
                   onChange={(e) => setTodayDate(e.target.value)}
-                  //onKeyUp={searchAppointments}
                   class="bg-secondary p-2 m-1 px-4 rounded text-white"
                   value={todayDate}
                   type="date"
@@ -147,14 +156,15 @@ function DocProfile() {
                       <Button
                         onClick={handleOpen}
                         key={app._id}
-                        className="col-md-2"
+                        className="col-sm-2 col-md-2 text-center"
+                        style={{ backgroundColor: "#145da0" }}
                       >
                         {app.startTime}-{app.endTime}
                       </Button>{" "}
                       {modalShow && (
                         <AppointmentModal
                           reload={searchAppointments}
-                          appointmentId={app._id}
+                          appointmentId={app}
                         />
                       )}
                     </>

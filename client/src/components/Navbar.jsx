@@ -57,7 +57,7 @@ function NavBar() {
           </NavLink>
           {isUserLoddedIn.isLoggedIn ? (
             <NavLink to="" onClick={logout} activeStyle>
-              <b>Log Out</b>
+              <b style={{ color: "white" }}>Log Out</b>
             </NavLink>
           ) : (
             ""
@@ -92,12 +92,14 @@ function NavBar() {
       </Nav>
       {loginAlert && (
         <Alert style={{ height: "150px" }} variant="info">
-          Please login to book appointment with doctor
+          <b>Please login to book appointment with doctor</b>
         </Alert>
       )}
       {bookingAlert && (
         <Alert variant="success">
-          appointment booked successfully check your email for conformation
+          <b>
+            appointment booked successfully check your email for conformation
+          </b>
         </Alert>
       )}
     </>

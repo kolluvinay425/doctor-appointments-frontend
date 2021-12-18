@@ -12,6 +12,7 @@ export const QUERY_DOCTORS = "QUERY_DOCTORS";
 export const DOCTOR_DETAIL = "DOCTOR_DETAIL";
 export const SET_DOCTOR_INFO = "SET_DOCTOR_INFO";
 export const GET_DOCTOR_QUERY_APPOINTMENTS = "GET_DOCTOR_QUERY_APPOINTMENTS";
+export const EMPTY_APPOINTMENTS = "EMPTY_APPOINTMENTS";
 // export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
 export const IS_MODAL = "IS_MODAL";
@@ -156,5 +157,12 @@ export const setDoctorInfo = (docData) => {
   return {
     type: SET_DOCTOR_INFO,
     payload: docData,
+  };
+};
+export const emptyAppointmentList = (appointment) => {
+  console.log("i'm hereeeee------>");
+  return {
+    type: EMPTY_APPOINTMENTS,
+    payload: appointment,
   };
 };

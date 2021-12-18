@@ -5,7 +5,7 @@ import "../styles/carousel.css";
 function CarouselSlide() {
   return (
     <>
-      <div class="hero-image">
+      <div class="hero-image" style={{ height: "100vh" }}>
         <Navbar />
 
         <div class="hero-text">

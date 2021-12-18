@@ -4,6 +4,7 @@ import {
   IS_MODAL,
   IS_BOOKED,
   IS_APP_BOOKED,
+  EMPTY_APPOINTMENTS,
 } from "../actions";
 
 export const appointmentReducer = (
@@ -13,6 +14,11 @@ export const appointmentReducer = (
   const { type, payload } = action;
   switch (type) {
     case QUERY_APPOINTMENTS:
+      return {
+        ...state,
+        queryAppointment: payload,
+      };
+    case EMPTY_APPOINTMENTS:
       return {
         ...state,
         queryAppointment: payload,
@@ -32,6 +38,7 @@ export const appointmentReducer = (
         ...state,
         isAppointmentBooked: payload,
       };
+
     default:
       return state;
   }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../../styles/docProfileTwo.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import PostAppointmnet from "./PostAppointmnet";
@@ -41,16 +42,31 @@ function Sidebar() {
         <div style={{ backgroundColor: "none" }} className="col-md-3">
           <ProSidebar className="  text-white">
             <Menu iconShape="square">
-              <MenuItem icon={"hello"}>
-                <h4 onClick={unToggle}>Find Slots</h4>
+              <MenuItem>
+                <h5 onClick={unToggle}>
+                  <b>Find Slots</b>{" "}
+                </h5>
               </MenuItem>
-              <MenuItem icon={"hello"}>
-                <h4 onClick={toggle}>Create slots</h4>
+              <MenuItem>
+                <h5 onClick={toggle}>
+                  {" "}
+                  <b>Create slots</b>{" "}
+                </h5>
               </MenuItem>
 
-              <SubMenu title="Components" icon={"hiii"}>
-                <MenuItem>Component 1</MenuItem>
-                <MenuItem>Component 2</MenuItem>
+              <SubMenu title="Bookings">
+                <MenuItem>
+                  {" "}
+                  <h5>
+                    <b>user bookings</b>
+                  </h5>{" "}
+                </MenuItem>
+                <MenuItem>
+                  {" "}
+                  <h5>
+                    <b>Component 2</b>
+                  </h5>{" "}
+                </MenuItem>
               </SubMenu>
             </Menu>
             <br />

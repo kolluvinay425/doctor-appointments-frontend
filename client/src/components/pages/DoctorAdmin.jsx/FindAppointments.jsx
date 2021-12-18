@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import "../../../styles/docProfile.css";
+import "../../../styles/docProfileTwo.css";
 import API from "../../../helpers/doctorAuth";
 
 import { doctorSearchQuery } from "../../../store/actions";
@@ -42,8 +42,11 @@ function FindAppointments() {
     }
   };
   return (
-    <div className="col-md-8">
-      <div class="card p-3 py-4 col-md-9" style={{ minWidth: "300px" }}>
+    <div className=" col-md-8">
+      <div
+        class="card p-3 py-4 col-sm-6 col-md-9"
+        style={{ minWidth: "300px" }}
+      >
         <Form className="form-control">
           <Form.Group className="mb-4" controlId="formBasicEmail">
             <Form.Label>Date:</Form.Label>
@@ -72,14 +75,17 @@ function FindAppointments() {
                 <Button
                   onClick={() => handleShow(appointment)}
                   style={{
-                    minHeight: "55px",
+                    minHeight: "45px",
                     minWidth: "100px",
                     backgroundColor: "#464f54",
+                    fontSize: "11px",
                   }}
                   className="col-md-2"
                   key={appointment._id}
                 >
-                  {appointment.startTime} To {appointment.endTime}
+                  <b>
+                    {appointment.startTime} To {appointment.endTime}
+                  </b>
                 </Button>
                 {showModal && (
                   <SlotModal
@@ -91,7 +97,11 @@ function FindAppointments() {
               </>
             ))}
         </div>
-        {checkTwo && <p>no appointments found on this date</p>}
+        {checkTwo && (
+          <p>
+            <b>no appointments found on this date</b>{" "}
+          </p>
+        )}
       </div>
     </div>
   );

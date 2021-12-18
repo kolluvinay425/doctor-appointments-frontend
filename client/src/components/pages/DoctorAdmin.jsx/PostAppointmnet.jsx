@@ -46,7 +46,7 @@ function PostAppointmnet() {
 
       <div className="row">
         <br />
-        <div class="card p-3 py-4 col-md-4" style={{ minWidth: "300px" }}>
+        <div class="card p-3 py-4 col-md-6" style={{ minWidth: "300px" }}>
           <div class="text-center">
             <Form className="form-control">
               <Form.Group className="mb-4" controlId="formBasicEmail">
@@ -83,9 +83,12 @@ function PostAppointmnet() {
             </Form>
           </div>
         </div>
-        <div className="col-7">
+        <div className="col-6">
           {isPosted && (
-            <Alert variant="success">appointment slot saved successfully</Alert>
+            <Alert variant="success">
+              {" "}
+              <b>appointment slot saved successfully</b>
+            </Alert>
           )}
         </div>
         {/* <div className="col-md-8">

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function HospitalQuery() {
   const hospitals = useSelector((s) => s.hospitals.queryData);
   return (
-    <div className="row">
+    <div className="row" style={{ height: "100vh" }}>
       {hospitals.map((hospital) => (
         <>
           <div key={hospital._id} className="col-md-3">

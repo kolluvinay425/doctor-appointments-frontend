@@ -3,7 +3,9 @@ import { Modal, Button, Form, FloatingLabel } from "react-bootstrap";
 import { FaLess } from "react-icons/fa";
 import API from "../../../helpers/doctorAuth.js";
 function SlotModal({ hide, show, appointment }) {
-  const [date, setDate] = useState(appointment.date);
+  const d = appointment.date.replace("T00:00:00.000Z", "");
+
+  const [date, setDate] = useState(d);
   const [startTime, setStartTime] = useState(appointment.startTime);
   const [endTime, setEndTime] = useState(appointment.endTime);
   const [isUpdated, setIsUpdated] = useState(FaLess);
