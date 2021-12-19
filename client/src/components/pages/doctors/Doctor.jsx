@@ -65,7 +65,12 @@ function Doctor() {
               <DoctorsQuery />
             </>
           ) : (
-            <DoctorsList />
+            <>
+              <h5>Our profissional Doctors</h5>
+              <br />
+              <br />
+              <DoctorsList />
+            </>
           )}
         </div>
       </div>

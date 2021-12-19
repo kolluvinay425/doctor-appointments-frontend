@@ -1,22 +1,16 @@
-body .bbbootstrap {
-  background-image: url(https://static.parade.com/wp-content/uploads/2014/01/doctor-appointment-wait-times-ftr.jpg) !important;
-  background-size: cover;
-  padding: 180px 0 30px 0;
-}
-
-.bbbootstrap {
+.bbbbootstrap {
   padding: 40px;
   margin-bottom: 22px;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  background-color: #2e9df7;
+  background-color: #145da0;
   -webkit-box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset,
     0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset;
   box-shadow: 0 15px 15px -15px rgba(0, 0, 0, 0.25) inset,
     0 -15px 15px -15px rgba(0, 0, 0, 0.25) inset;
 }
 
-.bbbootstrap form {
+.bbbbootstrap form {
   position: relative;
   width: 540px;
   margin: 22px auto 0;
@@ -34,7 +28,7 @@ span {
   vertical-align: baseline;
 }
 
-.bbbootstrap form input[type="text"] {
+.bbbbootstrap form input[type="text"] {
   padding: 15px 20px;
   padding-right: 100px;
   border-color: transparent;
@@ -66,7 +60,7 @@ input[type="text"] {
   border-radius: 4px;
 }
 
-.bbbootstrap form input[type="submit"] {
+.bbbbootstrap form input[type="submit"] {
   position: absolute;
   top: 5px;
   right: 5px;

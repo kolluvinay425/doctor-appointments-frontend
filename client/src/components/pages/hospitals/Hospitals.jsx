@@ -34,7 +34,7 @@ function Hospital() {
   }, []);
   return (
     <>
-      <div className="bbbootstrap">
+      <div className="bbbbootstrap">
         <div className="container">
           <form>
             <span
@@ -47,7 +47,7 @@ function Hospital() {
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchHospital}
               value={query}
-              placeholder="Search for the best Hospital"
+              placeholder="Search Hospital by name, location, city.... "
               className="InputBox "
             />
             <input

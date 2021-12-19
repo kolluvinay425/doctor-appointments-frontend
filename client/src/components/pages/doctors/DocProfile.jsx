@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "../../../styles/docProfile.css";
+import "../../../styles/carousel.css";
+
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { doctorDetail } from "../../../store/actions";
@@ -54,7 +56,7 @@ function DocProfile() {
       <br />
 
       <div class="row d-flex " style={{ height: "100vh" }}>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="card p-3 py-4">
             <div class="text-center">
               {" "}
@@ -62,10 +64,10 @@ function DocProfile() {
             </div>
             <div class="text-center mt-3">
               {" "}
-              <span class="bg-secondary p-1 px-4 rounded text-white">
+              {/* <span class="bg-secondary p-1 px-4 rounded text-white">
                 {" "}
                 <b>MBBS</b>{" "}
-              </span>
+              </span> */}
               <h5 class="mt-2 mb-0">
                 <b>
                   {doc.firstName} {doc.lastName}
@@ -126,25 +128,36 @@ function DocProfile() {
           </div>
         </div>
         {slots ? (
-          <div class="col-md-7">
+          <div class="col-md-6">
             <div class="card p-3 py-4">
-              <div class="text-center">
-                <input
-                  onChange={(e) => setTodayDate(e.target.value)}
-                  class="bg-secondary p-2 m-1 px-4 rounded text-white"
-                  value={todayDate}
-                  type="date"
-                />
+              <div className="row mx-2 p-0">
+                <div className="col-sm-7">
+                  <input
+                    onChange={(e) => setTodayDate(e.target.value)}
+                    style={{ backgroundColor: "#144470", minWidth: "300px" }}
+                    class=" p-2 mx-4 px-4 rounded text-white"
+                    value={todayDate}
+                    type="date"
+                  />
+                </div>
+                <div className="col-sm-5">
+                  <input
+                    onClick={searchAppointments}
+                    style={{ backgroundColor: "#144470", minWidth: "75px" }}
+                    type="button"
+                    value="Go"
+                    class=" p-2  px-4 mx-4 rounded text-white"
+                  />
+                </div>
+
+                <p className="mx-4" style={{ fontSize: "13px" }}>
+                  Note: 24-Hours time format
+                </p>
+
                 {/* <Calendar
                   onChange={(e) => setTodayDate(e.target.value)}
                   value={todayDate}
                 /> */}
-                <input
-                  onClick={searchAppointments}
-                  type="button"
-                  value="Go"
-                  class="bg-secondary p-2 m-1 px-4 rounded text-white"
-                />
               </div>
 
               <div class="row mt-4" style={{ marginLeft: "20px" }}>
@@ -156,10 +169,19 @@ function DocProfile() {
                       <Button
                         onClick={handleOpen}
                         key={app._id}
-                        className="col-sm-2 col-md-2 text-center"
-                        style={{ backgroundColor: "#145da0" }}
+                        className="col-sm-2 col-md-2 text-center "
+                        id="btn-1"
+                        style={{
+                          minHeight: "60px",
+                          minWidth: "100px",
+                          backgroundColor: "#195185",
+                          borderRadius: "45%",
+                          fontSize: "13px",
+                          // boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px)",
+                          // box-shadow: "0px 8px 15px rgba(0, 0, 0, 0.1)"
+                        }}
                       >
-                        {app.startTime}-{app.endTime}
+                        {app.startTime} - {app.endTime}
                       </Button>{" "}
                       {modalShow && (
                         <AppointmentModal

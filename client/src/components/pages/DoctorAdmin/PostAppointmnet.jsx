@@ -48,7 +48,7 @@ function PostAppointmnet() {
         <br />
         <div class="card p-3 py-4 col-md-6" style={{ minWidth: "300px" }}>
           <div class="text-center">
-            <Form className="form-control">
+            <Form>
               <Form.Group className="mb-4" controlId="formBasicEmail">
                 <Form.Label>Date:</Form.Label>
                 <Form.Control

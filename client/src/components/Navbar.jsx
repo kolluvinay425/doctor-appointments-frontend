@@ -40,9 +40,9 @@ function NavBar() {
     <>
       <Nav>
         <Link to="/">
-          <h1 style={{ color: "white", curser: "pointer", fontSize: "40px" }}>
+          <h2 style={{ color: "white", curser: "pointer", fontSize: "32px" }}>
             <MdMedicalServices />
-          </h1>
+          </h2>
         </Link>
         <Bars />
         <NavMenu>

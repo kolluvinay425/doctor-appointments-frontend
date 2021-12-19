@@ -17,9 +17,9 @@ function HospitLDetail() {
   }, []);
   return (
     <>
-      <header style={{ padding: "px" }}>
+      <header>
         <div class="overlay">
-          <h1>{id}</h1>
+          <h1 style={{ paddingTop: "25px" }}>{id}</h1>
           <h3>Reasons for Choosing US</h3>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
@@ -27,7 +27,7 @@ function HospitLDetail() {
             consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis
             qui magnam consequatur ab.
           </p>
-          <br />
+
           <button>READ MORE</button>
         </div>
       </header>

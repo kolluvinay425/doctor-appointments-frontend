@@ -9,7 +9,7 @@ function HospitalList() {
     <>
       <div className="row" style={{ height: "100vh" }}>
         <h4 className="text-center">
-          <strong>Hospitals near You</strong>
+          <strong className="p-0">Hospitals based on your Location</strong>
         </h4>
         <hr />
         {hospitals.map((hospital) => (

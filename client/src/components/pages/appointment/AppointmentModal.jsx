@@ -106,7 +106,7 @@ function AppointmentModal({ appointmentId, reload }) {
       </Modal.Body>
       <Modal.Footer>
         <Button style={{ backgroundColor: "#145da0" }} onClick={handleClose}>
-          Close
+          back
         </Button>
         <Button
           style={{ backgroundColor: "#145da0" }}

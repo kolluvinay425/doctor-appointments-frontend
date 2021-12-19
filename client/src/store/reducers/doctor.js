@@ -25,7 +25,7 @@ export const doctorReducer = (state = initialState.doctor, action) => {
     case QUERY_DOCTORS:
       return {
         ...state,
-        data: payload,
+        queryData: payload,
       };
     case FIND_HOS_DOCTORS:
       return {

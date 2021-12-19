@@ -1,6 +1,13 @@
 body {
   background: #eee;
 }
+#btn-1 {
+  transition: all 0.3s ease;
+}
+#btn-1:hover {
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+}
 .col-md-2 {
   background: rgb(111, 109, 235);
   margin: 3px;
