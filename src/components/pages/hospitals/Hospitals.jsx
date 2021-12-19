@@ -19,18 +19,18 @@ function Hospital() {
     dispatch(findHospitals(query));
   };
 
-  const getHospitals = async () => {
-    try {
-      const resp = await fetch(`${BE_URL}/hospital/all`);
-
-      if (resp) {
-        const data = await resp.json();
-        console.log("hospitals", data);
-        dispatch(fetchHospitals(data));
-      }
-    } catch (error) {}
-  };
   useEffect(() => {
+    const getHospitals = async () => {
+      try {
+        const resp = await fetch(`${BE_URL}/hospital/all`);
+
+        if (resp) {
+          const data = await resp.json();
+          console.log("hospitals", data);
+          dispatch(fetchHospitals(data));
+        }
+      } catch (error) {}
+    };
     getHospitals();
   }, []);
   return (

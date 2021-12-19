@@ -6,12 +6,13 @@ import { findHosDoctors } from "../../../store/actions";
 function HospitLDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const hosDoctors = async () => {
-    dispatch(findHosDoctors(id));
-  };
+
   const hosDocs = useSelector((s) => s.doctor.hospitalDoctors);
 
   useEffect(() => {
+    const hosDoctors = async () => {
+      dispatch(findHosDoctors(id));
+    };
     hosDoctors();
   }, []);
   return (
