@@ -10,23 +10,23 @@ function HospitalQuery() {
           <div key={hospital._id} className="col-md-3">
             <div className="profile-card-2">
               <Link to={`/hospital/${hospital.name}`}>
-                <img src={hospital.image} className="img img-responsive" />
+                <img
+                  src={hospital.image}
+                  className="img img-responsive"
+                  alt="img"
+                />
               </Link>
 
               <div className="profile-name"> {hospital.name} </div>
               <div className="profile-username">@{hospital.location}</div>
               <div className="profile-icons m-1">
-                <a href="#">
-                  <i className="bi bi-facebook "></i>
-                </a>
+                <input className="bi bi-facebook " type="button" />
+
                 <br />
-                <a href="#">
-                  <i className="bi bi-twitter"></i>
-                </a>
+                <input className="bi bi-twitter" type="button" />
+
                 <br />
-                <a href="#">
-                  <i className="bi bi-linkedin"></i>
-                </a>
+                <input className="bi bi-linkedin" type="button" />
               </div>
             </div>
           </div>

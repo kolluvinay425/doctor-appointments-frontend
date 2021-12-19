@@ -1,8 +1,8 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
 import { setDoctorInfo, isDocLoggedIn } from "../../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import API from "../../../helpers/doctorAuth";
 
 import DoctorSignup from "./SignUp";
@@ -20,7 +20,7 @@ function DoctorLogin() {
   const dispatch = useDispatch();
   // const path = history.location.pathname;
   // console.log("path!!", path);
-  const data = useSelector((s) => s.doctor);
+  //const data = useSelector((s) => s.doctor);
   // console.log("current redux data", data);
   const b = true;
   const login = async () => {
@@ -83,30 +83,23 @@ function DoctorLogin() {
               role="tablist"
             >
               <li className="nav-item">
-                <a
+                <input
                   onClick={toggleAuth}
                   className="nav-link active"
                   id="home-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="home"
-                  aria-selected="true"
-                >
-                  Login
-                </a>
+                  type="button"
+                  value="Login"
+                />
               </li>
               <li className="nav-item">
-                <a
+                <input
                   onClick={toggleAuth}
                   className="nav-link active"
                   id="profile-tab"
                   data-toggle="tab"
-                  role="tab"
-                  aria-controls="profile"
-                  aria-selected="false"
-                >
-                  SignUp
-                </a>
+                  value="SignUp"
+                  type="button"
+                />
               </li>
             </ul>
             <div className="tab-content" id="myTabContent">

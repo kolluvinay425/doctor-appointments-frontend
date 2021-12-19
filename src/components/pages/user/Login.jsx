@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
-import { setUserInfo, isLoggedIn, isAlert } from "../../../store/actions";
+import { setUserInfo, isLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAlert } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
@@ -80,30 +80,22 @@ function Login() {
           <div class="col-md-12">
             <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
               <li class="nav-item">
-                <a
+                <input
                   onClick={toggleAuth}
                   class="nav-link active"
                   id="home-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="home"
-                  aria-selected="true"
-                >
-                  Login
-                </a>
+                  type="button"
+                  value="Login"
+                />
               </li>
               <li class="nav-item">
-                <a
+                <input
                   onClick={toggleAuth}
                   class="nav-link active"
                   id="profile-tab"
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls="profile"
-                  aria-selected="false"
-                >
-                  SignUp
-                </a>
+                  type="button"
+                  value="SignUp"
+                />
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">

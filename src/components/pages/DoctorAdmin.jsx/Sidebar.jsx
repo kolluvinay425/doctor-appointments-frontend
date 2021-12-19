@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "../../../styles/docProfileTwo.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import PostAppointmnet from "./PostAppointmnet";
 import FindAppointment from "./FindAppointments.jsx";
 import "react-pro-sidebar/dist/css/styles.css";
-import DocNavbar from "../../DocNavbar";
-import { getDoctorInfo } from "../../../helpers/doctorAuth";
-import { setDoctorInfo } from "../../../store/actions";
 function Sidebar() {
   const [page, setPage] = useState(false);
   const [pageTwo, setPageTwo] = useState(false);
-  const dispatch = useDispatch();
 
-  const data = useSelector((s) => s.doctor);
   const toggle = () => {
     setPage(true);
     setPageTwo(false);
@@ -26,14 +21,14 @@ function Sidebar() {
   const loggedInDocName = useSelector((s) => s.doctor.DoctorInfo);
 
   useEffect(() => {
-    const getDocInfo = async () => {
-      try {
-        const data = getDoctorInfo();
-        dispatch(setDoctorInfo(data));
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    // const getDocInfo = async () => {
+    //   try {
+    //     const data = getDoctorInfo();
+    //     dispatch(setDoctorInfo(data));
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
     //getDocInfo();
   }, []);
   return (

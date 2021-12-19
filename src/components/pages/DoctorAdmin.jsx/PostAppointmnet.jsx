@@ -1,11 +1,7 @@
 import { React, useState } from "react";
 import { Button, Form, Alert } from "react-bootstrap";
-import { create } from "axios";
 import API from "../../../helpers/doctorAuth";
 
-import { queryAppointments } from "../../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
-import { FaHtml5 } from "react-icons/fa";
 function PostAppointmnet() {
   const today = new Date();
   const todayDatee =
@@ -14,7 +10,6 @@ function PostAppointmnet() {
   const [startTimee, setStartTime] = useState("09:00");
   const [endTimee, setEndTime] = useState("10:00");
   const [isPosted, setIsPosted] = useState(false);
-  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();

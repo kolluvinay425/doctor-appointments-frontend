@@ -5,7 +5,6 @@ import { bookingAlert, isModel } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
 import { useHistory } from "react-router";
 import { loginAlert } from "../../../store/actions";
-import { emptyAppointmentList } from "../../../store/actions";
 function AppointmentModal({ appointmentId, reload }) {
   const date = appointmentId.date.replace("T00:00:00.000Z", "");
   const [isLoading, setIsLoading] = useState(false);
@@ -16,10 +15,6 @@ function AppointmentModal({ appointmentId, reload }) {
     dispatch(isModel(false));
   };
   const history = useHistory();
-
-  const today = new Date();
-  const todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
   const user = useSelector((s) => s.user.isLoggedIn);
   const doctor = useSelector((s) => s.doctor.doctorDetail);

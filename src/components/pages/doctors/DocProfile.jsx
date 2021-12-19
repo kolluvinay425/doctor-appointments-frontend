@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../../../styles/docProfile.css";
 import "../../../styles/carousel.css";
 
@@ -26,9 +26,7 @@ function DocProfile() {
   const { id } = useParams();
   const appointments = useSelector((s) => s.appointment.queryAppointment);
   const emptyAppointments = appointments.length === 0;
-  const docDetail = async () => {
-    dispatch(doctorDetail(id));
-  };
+
   const doc = useSelector((s) => s.doctor.doctorDetail);
   // const fetchTodayAppointments = async () => {
   //   console.log("today's date", todayDate);
@@ -43,6 +41,9 @@ function DocProfile() {
     console.log("search results for appointments", appointments);
   };
   useEffect(() => {
+    const docDetail = async () => {
+      dispatch(doctorDetail(id));
+    };
     docDetail();
     searchAppointments();
   }, []);
@@ -60,7 +61,12 @@ function DocProfile() {
           <div class="card p-3 py-4">
             <div class="text-center">
               {" "}
-              <img src={doc.image} width="100" class="rounded-circle" />{" "}
+              <img
+                src={doc.image}
+                width="100"
+                class="rounded-circle"
+                alt="img"
+              />{" "}
             </div>
             <div class="text-center mt-3">
               {" "}

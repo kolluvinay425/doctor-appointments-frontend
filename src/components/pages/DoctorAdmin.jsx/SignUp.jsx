@@ -1,7 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { getHospitals } from "../../../helpers/doctorAuth";
-import { useSelector } from "react-redux";
 
 function DoctorSignup() {
   const [hnames, setHnames] = useState([]);
@@ -15,7 +14,6 @@ function DoctorSignup() {
     hospital: "",
     password: "",
   });
-  const data = useSelector((s) => s.doctor.DoctorInfo);
   const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();

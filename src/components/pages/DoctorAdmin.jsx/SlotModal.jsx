@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, FloatingLabel } from "react-bootstrap";
-import { FaLess } from "react-icons/fa";
 import API from "../../../helpers/doctorAuth.js";
 function SlotModal({ hide, show, appointment }) {
   const d = appointment.date.replace("T00:00:00.000Z", "");
@@ -8,7 +7,7 @@ function SlotModal({ hide, show, appointment }) {
   const [date, setDate] = useState(d);
   const [startTime, setStartTime] = useState(appointment.startTime);
   const [endTime, setEndTime] = useState(appointment.endTime);
-  const [isUpdated, setIsUpdated] = useState(FaLess);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +23,6 @@ function SlotModal({ hide, show, appointment }) {
       if (data) {
         console.log("Updated appointment", data);
         hide();
-        setIsUpdated(true);
         setTimeout(() => {
           setIsUpdated(false);
         }, 5000);

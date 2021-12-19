@@ -15,7 +15,7 @@ function DoctorsList() {
           <div className="our-team">
             <div className="picture">
               <Link to={`/doc-profile/${doctor._id}`}>
-                <img className="img-fluid" src={doctor.image} />
+                <img className="img-fluid" src={doctor.image} alt="img" />
               </Link>
             </div>
             <div className="team-content">
@@ -32,32 +32,32 @@ function DoctorsList() {
             </div>
             <ul className="social">
               <li>
-                <a
-                  href="https://codepen.io/collection/XdWJOQ/"
+                <input
                   className="bi bi-facebook "
                   aria-hidden="true"
-                ></a>
+                  type="button"
+                />
               </li>
               <li>
-                <a
-                  href="https://codepen.io/collection/XdWJOQ/"
+                <input
                   className="bi bi-twitter"
                   aria-hidden="true"
-                ></a>
+                  type="button"
+                />
               </li>
               <li>
-                <a
-                  href="https://codepen.io/collection/XdWJOQ/"
+                <input
                   className="bi bi-google"
                   aria-hidden="true"
-                ></a>
+                  type="button"
+                />
               </li>
               <li>
-                <a
-                  href="https://codepen.io/collection/XdWJOQ/"
+                <input
                   className="bi bi-linkedin"
                   aria-hidden="true"
-                ></a>
+                  type="button"
+                />
               </li>
             </ul>
           </div>

@@ -17,7 +17,11 @@ function HospitalList() {
             <div key={hospital._id} className="col-md-3">
               <div className="profile-card-2">
                 <Link to={`/hospital/${hospital.name}`}>
-                  <img src={hospital.image} className="img img-responsive" />
+                  <img
+                    src={hospital.image}
+                    className="img img-responsive"
+                    alt="img"
+                  />
                 </Link>
 
                 <div className="profile-name"> {hospital.name}</div>

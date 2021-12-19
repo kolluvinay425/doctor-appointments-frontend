@@ -18,17 +18,17 @@ function Doctor() {
     dispatch(findDoctors(query));
   };
 
-  const getDoctors = async () => {
-    try {
-      const resp = await fetch(`${BE_URL}/doctor`);
-      if (resp) {
-        const data = await resp.json();
-        console.log("doctors-------->", data);
-        dispatch(fetchDoctors(data));
-      }
-    } catch (error) {}
-  };
   useEffect(() => {
+    const getDoctors = async () => {
+      try {
+        const resp = await fetch(`${BE_URL}/doctor`);
+        if (resp) {
+          const data = await resp.json();
+          console.log("doctors-------->", data);
+          dispatch(fetchDoctors(data));
+        }
+      } catch (error) {}
+    };
     getDoctors();
   }, []);
   return (

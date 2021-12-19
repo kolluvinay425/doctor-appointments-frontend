@@ -3,7 +3,6 @@ import "../../../styles/docDetail.css";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { findHosDoctors } from "../../../store/actions";
-import { hospitalDoctors } from "../../../helpers/doctorFetches";
 function HospitLDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -40,7 +39,7 @@ function HospitLDetail() {
               <div className="our-team">
                 <div className="picture">
                   <Link to={`/doc-profile/${doc._id}`}>
-                    <img className="img-fluid" src={doc.image} />
+                    <img className="img-fluid" src={doc.image} alt="img" />
                   </Link>
                 </div>
                 <div className="team-content">
@@ -58,32 +57,32 @@ function HospitLDetail() {
                 </div>
                 <ul className="social">
                   <li>
-                    <a
-                      href="https://codepen.io/collection/XdWJOQ/"
+                    <input
                       className="bi bi-facebook "
                       aria-hidden="true"
-                    ></a>
+                      type="button"
+                    />
                   </li>
                   <li>
-                    <a
-                      href="https://codepen.io/collection/XdWJOQ/"
+                    <input
                       className="bi bi-twitter"
                       aria-hidden="true"
-                    ></a>
+                      type="button"
+                    />
                   </li>
                   <li>
-                    <a
-                      href="https://codepen.io/collection/XdWJOQ/"
+                    <input
                       className="bi bi-google"
                       aria-hidden="true"
-                    ></a>
+                      type="button"
+                    />
                   </li>
                   <li>
-                    <a
-                      href="https://codepen.io/collection/XdWJOQ/"
+                    <input
                       className="bi bi-linkedin"
                       aria-hidden="true"
-                    ></a>
+                      type="button"
+                    />
                   </li>
                 </ul>
               </div>

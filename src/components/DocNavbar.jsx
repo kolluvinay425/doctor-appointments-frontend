@@ -31,7 +31,7 @@ function DocNavbar() {
 
   const isDocLoddedIn = useSelector((s) => s.doctor);
   console.log("doctor info", isDocLoddedIn.DoctorInfo);
-  const loginAlert = useSelector((s) => s.doctor.isPosted);
+  //const loginAlert = useSelector((s) => s.doctor.isPosted);
   //const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
   return (
     <div>
