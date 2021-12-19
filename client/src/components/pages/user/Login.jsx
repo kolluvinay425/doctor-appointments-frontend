@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginAlert } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
-export const URL = create({ baseURL: "http://localhost:3001" });
+import { BE_URL } from "../../../helpers/apiFetches";
+export const URL = create({ baseURL: BE_URL });
 
 function Login() {
   const [isActive, setIsActive] = useState(false);

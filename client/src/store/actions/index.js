@@ -16,7 +16,7 @@ export const EMPTY_APPOINTMENTS = "EMPTY_APPOINTMENTS";
 // export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
 export const IS_MODAL = "IS_MODAL";
-const url = process.env.REACT_BACK_END_URL;
+const url = "http://localhost:3001";
 
 export const doctorSearchQuery = (data) => ({
   type: GET_DOCTOR_QUERY_APPOINTMENTS,

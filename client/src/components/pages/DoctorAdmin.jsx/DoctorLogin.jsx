@@ -8,7 +8,6 @@ import API from "../../../helpers/doctorAuth";
 import DoctorSignup from "./SignUp";
 
 import "../../../styles/login.css";
-import { BE_URL } from "../../../helpers/apiFetches";
 function DoctorLogin() {
   const [isActive, setIsActive] = useState(false);
   const [userCreds, setUserCreds] = useState({
@@ -16,7 +15,7 @@ function DoctorLogin() {
     password: "",
   });
 
-  const URL = create({ baseURL: BE_URL });
+  const URL = create({ baseURL: "http://localhost:3001" });
   const history = useHistory();
   const dispatch = useDispatch();
   // const path = history.location.pathname;

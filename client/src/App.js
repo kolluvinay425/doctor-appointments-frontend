@@ -10,12 +10,12 @@ import Login from "./components/pages/user/Login";
 import CarouselSlide from "./components/CarouselSlide";
 import Hospital from "./components/pages/hospitals/Hospitals";
 import HospitLDetail from "./components/pages/hospitals/HospitalDetail";
-import DoctorLogin from "./components/pages/DoctorAdmin/DoctorLogin";
+import DoctorLogin from "./components/pages/DoctorAdmin.jsx/DoctorLogin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { persistor, configureStore } from "./store";
 import { PersistGate } from "redux-persist/integration/react";
-import Sidebar from "./components/pages/DoctorAdmin/Sidebar";
+import Sidebar from "./components/pages/DoctorAdmin.jsx/Sidebar";
 import DocNavbar from "./components/DocNavbar";
 function App() {
   return (
