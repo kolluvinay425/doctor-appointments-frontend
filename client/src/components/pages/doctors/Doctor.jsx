@@ -5,6 +5,7 @@ import DoctorsQuery from "./DoctorsQuery";
 import DoctorsList from "./DoctorsList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoctors, findDoctors } from "../../../store/actions";
+import { BE_URL } from "../../../helpers/apiFetches";
 function Doctor() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function Doctor() {
 
   const getDoctors = async () => {
     try {
-      const resp = await fetch("http://localhost:3001/doctor");
+      const resp = await fetch(`${BE_URL}/doctor`);
       if (resp) {
         const data = await resp.json();
         console.log("doctors-------->", data);

@@ -1,6 +1,7 @@
-import { create, defaults } from "axios";
+import { create } from "axios";
+import { BE_URL } from "./apiFetches";
 
-const API = create({ baseURL: "http://localhost:3001" });
+const API = create({ baseURL: BE_URL });
 
 const refreshAccessToken = async () => {
   const { data } = await API.post("/doctor/login", {
@@ -55,7 +56,7 @@ API.interceptors.response.use(
 
 export const getHospitals = async () => {
   try {
-    const resp = await fetch("http://localhost:3001/hospital/all");
+    const resp = await fetch(`${BE_URL}/hospital/all`);
     if (resp) {
       const data = await resp.json();
       return data;
@@ -65,7 +66,7 @@ export const getHospitals = async () => {
 export const doctorRegister = async (data) => {
   console.log("daaaa", data.firstName);
   try {
-    const resp = await fetch("http://localhost:3001/doctor/register", {
+    const resp = await fetch(`${BE_URL}/doctor/register`, {
       method: "post",
       headers: {
         "Content-type": "application/json",

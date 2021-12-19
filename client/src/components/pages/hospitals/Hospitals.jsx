@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { findHospitals } from "../../../store/actions";
 import HospitalQuery from "./HospitalQuery";
 import HospitalList from "./HospitalList";
+import { BE_URL } from "../../../helpers/apiFetches";
 function Hospital() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function Hospital() {
 
   const getHospitals = async () => {
     try {
-      const resp = await fetch("http://localhost:3001/hospital/all");
+      const resp = await fetch(`${BE_URL}/hospital/all`);
 
       if (resp) {
         const data = await resp.json();

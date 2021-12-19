@@ -15,7 +15,6 @@ function PostAppointmnet() {
   const [endTimee, setEndTime] = useState("10:00");
   const [isPosted, setIsPosted] = useState(false);
   const dispatch = useDispatch();
-  const URL = create({ baseURL: "http://localhost:3001" });
 
   const handleSubmit = async (event) => {
     event.preventDefault();

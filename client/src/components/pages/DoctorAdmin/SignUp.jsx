@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { getHospitals } from "../../../helpers/doctorAuth";
 import { useSelector } from "react-redux";
+import { BE_URL } from "../../../helpers/apiFetches";
 
 function DoctorSignup() {
   const [hnames, setHnames] = useState([]);
@@ -22,7 +23,7 @@ function DoctorSignup() {
 
     console.log("daaaa", docRegister);
     try {
-      const resp = await fetch("http://localhost:3001/doctor/register", {
+      const resp = await fetch(`${BE_URL}/doctor/register`, {
         method: "post",
         headers: {
           "Content-type": "application/json",

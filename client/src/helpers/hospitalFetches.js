@@ -1,9 +1,8 @@
-const url = "http://localhost:3001";
-
+import { BE_URL } from "./apiFetches";
 export const queryHospital = async (query) => {
   console.log("query", query);
   try {
-    const resp = await fetch(`${url}/hospital?search=${query}`);
+    const resp = await fetch(`${BE_URL}/hospital?search=${query}`);
     if (resp) {
       const data = await resp.json();
       return data;
