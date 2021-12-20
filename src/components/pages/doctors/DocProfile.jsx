@@ -85,10 +85,13 @@ function DocProfile() {
               </span>
               <div class="px-4 mt-1">
                 <p class="fonts">
-                  Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat.{" "}
+                  There are eighteen attending physicians in our department.
+                  With the exception of junior faculties, all have academic
+                  appointment and several of them are associate or full
+                  professors. Each physician in our department have his own
+                  sub-specialty; the fields cover tumors of central nervous
+                  system, head and neck, lung, breast, esophagus,
+                  gastrointestinal tract.{" "}
                 </p>
               </div>
               <ul class="social-list">

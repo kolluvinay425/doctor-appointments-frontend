@@ -10,10 +10,12 @@ function DocDetail() {
           <h3>Hospital Name</h3>
           <h3>Reasons for Choosing US</h3>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
-            nostrum quis, odio veniam itaque ullam debitis qui magnam
-            consequatur ab. Vero nostrum quis, odio veniam itaque ullam debitis
-            qui magnam consequatur ab.
+            There are eighteen attending physicians in our department. With the
+            exception of junior faculties, all have academic appointment and
+            several of them are associate or full professors. Each physician in
+            our department have his own sub-specialty; the fields cover tumors
+            of central nervous system, head and neck, lung, breast, esophagus,
+            gastrointestinal tract.
           </p>
           <br />
           <button>READ MORE</button>
