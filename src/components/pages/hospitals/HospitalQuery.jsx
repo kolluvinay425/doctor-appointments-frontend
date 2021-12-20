@@ -20,13 +20,17 @@ function HospitalQuery() {
               <div className="profile-name"> {hospital.name} </div>
               <div className="profile-username">@{hospital.location}</div>
               <div className="profile-icons m-1">
-                <input className="bi bi-facebook " type="button" />
-
+                <a href="#">
+                  <i className="bi bi-facebook "></i>
+                </a>
                 <br />
-                <input className="bi bi-twitter" type="button" />
-
+                <a href="#">
+                  <i className="bi bi-twitter"></i>
+                </a>
                 <br />
-                <input className="bi bi-linkedin" type="button" />
+                <a href="#">
+                  <i className="bi bi-linkedin"></i>
+                </a>
               </div>
             </div>
           </div>

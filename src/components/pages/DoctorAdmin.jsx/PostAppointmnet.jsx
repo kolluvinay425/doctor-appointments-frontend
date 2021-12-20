@@ -44,7 +44,10 @@ function PostAppointmnet() {
           <div class="text-center">
             <Form>
               <Form.Group className="mb-4" controlId="formBasicEmail">
-                <Form.Label>Date:</Form.Label>
+                <Form.Label>
+                  {" "}
+                  <b style={{ fontSize: "15px" }}>Date</b>{" "}
+                </Form.Label>
                 <Form.Control
                   onChange={(e) => setDate(e.target.value)}
                   value={datee}
@@ -53,7 +56,10 @@ function PostAppointmnet() {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Start Time:</Form.Label>
+                <Form.Label>
+                  {" "}
+                  <b style={{ fontSize: "15px" }}>Start Time</b>{" "}
+                </Form.Label>
 
                 <Form.Control
                   onChange={(e) => setStartTime(e.target.value)}
@@ -63,7 +69,11 @@ function PostAppointmnet() {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>End Time:</Form.Label>
+                <Form.Label>
+                  {" "}
+                  <b style={{ fontSize: "15px" }}>End Time</b>{" "}
+                </Form.Label>
+
                 <Form.Control
                   onChange={(e) => setEndTime(e.target.value)}
                   value={endTimee}
@@ -71,7 +81,12 @@ function PostAppointmnet() {
                   placeholder="Password"
                 />
               </Form.Group>
-              <Button onClick={handleSubmit} variant="primary" type="submit">
+
+              <Button
+                style={{ backgroundColor: "#484b4d" }}
+                onClick={handleSubmit}
+                type="submit"
+              >
                 Submit
               </Button>
             </Form>
@@ -80,7 +95,6 @@ function PostAppointmnet() {
         <div className="col-6">
           {isPosted && (
             <Alert variant="success">
-              {" "}
               <b>appointment slot saved successfully</b>
             </Alert>
           )}

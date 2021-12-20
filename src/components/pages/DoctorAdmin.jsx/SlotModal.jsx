@@ -91,11 +91,11 @@ function SlotModal({ hide, show, appointment }) {
           </>
         </Modal.Body>
         <Modal.Footer>
-          <Button style={{ backgroundColor: "" }} onClick={handleDelete}>
+          <Button style={{ backgroundColor: "#484b4d" }} onClick={handleDelete}>
             Delete
           </Button>
 
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button style={{ backgroundColor: "#484b4d" }} onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>

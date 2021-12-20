@@ -1,6 +1,6 @@
 import { create } from "axios";
 
-export const BE_URL = process.env.REACT_APP_BACKEND_URL;
+export const BE_URL = "http://localhost:3001";
 const API = create({ baseURL: BE_URL });
 
 const refreshAccessToken = async () => {
