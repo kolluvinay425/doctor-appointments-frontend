@@ -32,32 +32,32 @@ function DoctorsList() {
             </div>
             <ul className="social">
               <li>
-                <input
+                <a
+                  href="https://codepen.io/collection/XdWJOQ/"
                   className="bi bi-facebook "
                   aria-hidden="true"
-                  type="button"
-                />
+                ></a>
               </li>
               <li>
-                <input
+                <a
+                  href="https://codepen.io/collection/XdWJOQ/"
                   className="bi bi-twitter"
                   aria-hidden="true"
-                  type="button"
-                />
+                ></a>
               </li>
               <li>
-                <input
+                <a
+                  href="https://codepen.io/collection/XdWJOQ/"
                   className="bi bi-google"
                   aria-hidden="true"
-                  type="button"
-                />
+                ></a>
               </li>
               <li>
-                <input
+                <a
+                  href="https://codepen.io/collection/XdWJOQ/"
                   className="bi bi-linkedin"
                   aria-hidden="true"
-                  type="button"
-                />
+                ></a>
               </li>
             </ul>
           </div>

@@ -30,7 +30,7 @@ function Doctor() {
       } catch (error) {}
     };
     getDoctors();
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <div className="bbbootstrap">

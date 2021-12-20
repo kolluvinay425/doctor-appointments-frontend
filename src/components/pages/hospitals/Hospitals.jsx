@@ -32,7 +32,7 @@ function Hospital() {
       } catch (error) {}
     };
     getHospitals();
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <div className="bbbbootstrap">

@@ -45,8 +45,8 @@ function DocProfile() {
       dispatch(doctorDetail(id));
     };
     docDetail();
-    searchAppointments();
-  }, []);
+    //searchAppointments();
+  }, [dispatch, id]);
   const openSlots = () => {
     setSlots(!slots);
   };
