@@ -15,7 +15,9 @@ function DoctorLogin() {
     password: "",
   });
 
-  const URL = create({ baseURL: "http://localhost:3001" });
+  const URL = create({
+    baseURL: "https://doctor-appointments-frontend.vercel.app",
+  });
   const history = useHistory();
   const dispatch = useDispatch();
   // const path = history.location.pathname;

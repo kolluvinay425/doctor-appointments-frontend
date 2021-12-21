@@ -1,6 +1,6 @@
 import { create } from "axios";
 
-export const BE_URL = "http://localhost:3001";
+export const BE_URL = "https://doctor-appointments-frontend.vercel.app";
 const API = create({ baseURL: BE_URL });
 
 const refreshAccessToken = async () => {
