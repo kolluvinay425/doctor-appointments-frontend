@@ -1,6 +1,6 @@
 import { create } from "axios";
 
-export const BE_URL = "https://doctor-finder-vny.herokuapp.com";
+export const BE_URL = process.env.REACT_APP_BACKEND_URL;
 const API = create({ baseURL: BE_URL });
 
 const refreshAccessToken = async () => {
