@@ -1,2 +1,2 @@
 # doctor-appointments-frontend
- this contains frontend part of my appointments project
+ this contains front-end part of my appointments booking system project
