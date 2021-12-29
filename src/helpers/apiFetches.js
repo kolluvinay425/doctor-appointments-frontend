@@ -78,4 +78,20 @@ export const doctorRegister = async (data) => {
     }
   } catch (error) {}
 };
+export const userRegister = async (data) => {
+  console.log("daaaa", data.firstName);
+  try {
+    const resp = await fetch(`${BE_URL}/user/register`, {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringiffy(data),
+    });
+    if (resp) {
+      const data = await resp.json();
+      return data;
+    }
+  } catch (error) {}
+};
 export default API;

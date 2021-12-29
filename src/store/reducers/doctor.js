@@ -6,6 +6,7 @@ import {
   IS_DOC_LOGGEDIN,
   SET_DOCTOR_INFO,
   GET_DOCTOR_QUERY_APPOINTMENTS,
+  IS_REGISTERED,
 } from "../actions";
 import { initialState } from "..";
 
@@ -47,6 +48,7 @@ export const doctorReducer = (state = initialState.doctor, action) => {
         ...state,
         DoctorInfo: payload,
       };
+
     default:
       return state;
   }

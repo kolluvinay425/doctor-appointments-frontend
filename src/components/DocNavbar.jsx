@@ -17,22 +17,18 @@ import {
 function DocNavbar() {
   const dispatch = useDispatch();
   const history = useHistory();
-  //   const b = false;
-  //   const data = [];
+
   const logout = () => {
-    //localStorage.clear();
     localStorage.removeItem("DocaccessToken");
     localStorage.removeItem("DocrefreshToken");
 
     dispatch(isDocLoggedIn(false));
     dispatch(setDoctorInfo([]));
-    history.push("/doctor-admin");
+    history.push("doctor-login");
   };
 
   const isDocLoddedIn = useSelector((s) => s.doctor);
   console.log("doctor info", isDocLoddedIn.DoctorInfo);
-  //const loginAlert = useSelector((s) => s.doctor.isPosted);
-  //const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
   return (
     <div>
       <Nav>

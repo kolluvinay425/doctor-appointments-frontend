@@ -33,6 +33,8 @@ function NavBar() {
   };
 
   const isUserLoddedIn = useSelector((s) => s.user);
+  const userRegistered = useSelector((s) => s.user.isRegistered);
+
   const loginAlert = useSelector((s) => s.appointment.isBooked);
   const bookingAlert = useSelector((s) => s.appointment.isAppointmentBooked);
 
@@ -90,6 +92,11 @@ function NavBar() {
           </NavBtn>
         )}
       </Nav>
+      {userRegistered && (
+        <Alert variant="success">
+          <b>Registration successful, login to continue...</b>
+        </Alert>
+      )}
       {loginAlert && (
         <Alert style={{ height: "150px" }} variant="info">
           <b>Please login to book appointment with doctor</b>

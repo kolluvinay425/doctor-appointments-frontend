@@ -1,4 +1,4 @@
-import { SET_USER_INFO, IS_LOGGEDIN } from "../actions";
+import { SET_USER_INFO, IS_LOGGEDIN, IS_REGISTERED } from "../actions";
 
 import { initialState } from "..";
 
@@ -14,6 +14,11 @@ export const userReducer = (state = initialState.user, action) => {
       return {
         ...state,
         isLoggedIn: payload,
+      };
+    case IS_REGISTERED:
+      return {
+        ...state,
+        isRegistered: payload,
       };
     default:
       return state;

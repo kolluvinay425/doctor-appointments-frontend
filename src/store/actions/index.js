@@ -13,7 +13,7 @@ export const DOCTOR_DETAIL = "DOCTOR_DETAIL";
 export const SET_DOCTOR_INFO = "SET_DOCTOR_INFO";
 export const GET_DOCTOR_QUERY_APPOINTMENTS = "GET_DOCTOR_QUERY_APPOINTMENTS";
 export const EMPTY_APPOINTMENTS = "EMPTY_APPOINTMENTS";
-// export const TODAY_APPOINTMENTS = "TODAY_APPOINTMENTS";
+export const IS_REGISTERED = "IS_REGISTERED";
 export const QUERY_APPOINTMENTS = "QUERY_APPOINTMENTS";
 export const IS_MODAL = "IS_MODAL";
 const url = process.env.REACT_APP_BACKEND_URL;
@@ -165,5 +165,12 @@ export const emptyAppointmentList = (appointment) => {
   return {
     type: EMPTY_APPOINTMENTS,
     payload: appointment,
+  };
+};
+export const isUserRegistered = (b) => {
+  console.log("i'm hereeeee------>");
+  return {
+    type: IS_REGISTERED,
+    payload: b,
   };
 };

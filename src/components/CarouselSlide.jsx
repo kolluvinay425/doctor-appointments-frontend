@@ -1,8 +1,16 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styles/carousel.css";
+import { useDispatch } from "react-redux";
+import { isUserRegistered } from "../store/actions";
 function CarouselSlide() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(isUserRegistered(false));
+    }, 5000);
+  }, []);
   return (
     <>
       <div class="hero-image" style={{ height: "100vh" }}>

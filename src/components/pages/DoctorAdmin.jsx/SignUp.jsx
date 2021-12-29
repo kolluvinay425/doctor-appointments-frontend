@@ -30,7 +30,7 @@ function DoctorSignup() {
       if (resp) {
         const data = await resp.json();
         console.log(data);
-        history.push("");
+        history.push("/doctor-login");
       }
     } catch (error) {}
   };

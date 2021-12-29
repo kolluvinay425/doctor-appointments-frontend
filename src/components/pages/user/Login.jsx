@@ -8,6 +8,7 @@ import { loginAlert } from "../../../store/actions";
 import API from "../../../helpers/apiFetches";
 import "../../../styles/login.css";
 import { BE_URL } from "../../../helpers/apiFetches";
+import UserSignUp from "./UserSignUp";
 export const URL = create({ baseURL: BE_URL });
 
 function Login() {
@@ -119,66 +120,7 @@ function Login() {
                 >
                   {isActive ? (
                     <>
-                      <h3 class="register-heading">Register Here</h3>
-                      <div class="row register-form">
-                        <div class="col-md-12">
-                          <form method="post">
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                name="LGform1_user"
-                                class="form-control"
-                                placeholder="Your First Name *"
-                                value=""
-                                required=""
-                              />
-                            </div>
-                            <br />
-                            <div class="form-group">
-                              <input
-                                type="text"
-                                name="LGform1_user"
-                                class="form-control"
-                                placeholder="Your Last Name *"
-                                value=""
-                                required=""
-                              />
-                            </div>
-                            <br />
-
-                            <div class="form-group">
-                              <input
-                                type="email"
-                                name="LGform1_user"
-                                class="form-control"
-                                placeholder="Your Email *"
-                                value=""
-                                required=""
-                              />
-                            </div>
-                            <br />
-                            <div class="form-group">
-                              <input
-                                type="password"
-                                name="LGform1_pwd"
-                                class="form-control"
-                                placeholder="Your Password *"
-                                value=""
-                                required=""
-                              />
-                            </div>
-                            <br />
-                            <div class="form-group">
-                              <input
-                                type="submit"
-                                name="LGform1"
-                                class="btnContactSubmit"
-                                value="Submit"
-                              />
-                            </div>
-                          </form>
-                        </div>
-                      </div>
+                      <UserSignUp />
                     </>
                   ) : (
                     <>
