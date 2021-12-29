@@ -82,180 +82,182 @@ function Login() {
       <br />
       <br />
       <br />
-      <div class="container register" style={{ minWidth: "150px" }}>
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-              <li class="nav-item">
-                <input
-                  onClick={toggleAuth}
-                  class="nav-link active"
-                  id="home-tab"
-                  type="button"
-                  value="Login"
-                />
-              </li>
-              <li class="nav-item">
-                <input
-                  onClick={toggleAuth}
-                  class="nav-link active"
-                  id="profile-tab"
-                  type="button"
-                  value="SignUp"
-                />
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div
-                class="tab-pane fade show active text-align form-new"
-                id="home"
-                role="tabpanel"
-                aria-labelledby="home-tab"
-              >
-                {isActive ? (
-                  <>
-                    <h3 class="register-heading">Register Here</h3>
-                    <div class="row register-form">
-                      <div class="col-md-12">
-                        <form method="post">
-                          <div class="form-group">
-                            <input
-                              type="text"
-                              name="LGform1_user"
-                              class="form-control"
-                              placeholder="Your First Name *"
-                              value=""
-                              required=""
-                            />
-                          </div>
-                          <br />
-                          <div class="form-group">
-                            <input
-                              type="text"
-                              name="LGform1_user"
-                              class="form-control"
-                              placeholder="Your Last Name *"
-                              value=""
-                              required=""
-                            />
-                          </div>
-                          <br />
+      <br />
+      <br />
+      <br />
 
-                          <div class="form-group">
-                            <input
-                              type="email"
-                              name="LGform1_user"
-                              class="form-control"
-                              placeholder="Your Email *"
-                              value=""
-                              required=""
-                            />
-                          </div>
-                          <br />
-                          <div class="form-group">
-                            <input
-                              type="password"
-                              name="LGform1_pwd"
-                              class="form-control"
-                              placeholder="Your Password *"
-                              value=""
-                              required=""
-                            />
-                          </div>
-                          <br />
-                          <div class="form-group">
-                            <input
-                              type="submit"
-                              name="LGform1"
-                              class="btnContactSubmit"
-                              value="Submit"
-                            />
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <h3 class="register-heading">Log in</h3>
-                    <div class="row register-form">
-                      <div class="col-md-12">
-                        {isLoading && (
-                          <Spinner animation="grow" varient="dark" />
-                        )}
-                        {isError && (
-                          <p className="text-red">
-                            Check Credentionals correctly and try again
-                          </p>
-                        )}
-                        <form method="post">
-                          <div class="form-group">
-                            <input
-                              onChange={(e) =>
-                                setUserCreds({
-                                  ...userCreds,
-                                  email: e.target.value,
-                                })
-                              }
-                              value={userCreds.email}
-                              type="text"
-                              class="form-control"
-                              placeholder="Your Email *"
-                              style={{ minWidth: "120px" }}
-                            />
-                          </div>
-                          <br />
-                          <div class="form-group">
-                            <input
-                              onChange={(e) =>
-                                setUserCreds({
-                                  ...userCreds,
-                                  password: e.target.value,
-                                })
-                              }
-                              value={userCreds.password}
-                              type="password"
-                              class="form-control"
-                              placeholder="Your Password *"
-                              style={{ minWidth: "120px" }}
-                            />
-                          </div>
-                          <br />
-                          <div class="form-group">
-                            <input
-                              onClick={(e) => login(e)}
-                              type="button"
-                              value="Login"
-                            />
+      <div style={{ height: "100vh" }}>
+        <div class="container register" style={{ minWidth: "150px" }}>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <input
+                    onClick={toggleAuth}
+                    class="nav-link active"
+                    id="home-tab"
+                    type="button"
+                    value="Login"
+                  />
+                </li>
+                <li class="nav-item">
+                  <input
+                    onClick={toggleAuth}
+                    class="nav-link active"
+                    id="profile-tab"
+                    type="button"
+                    value="SignUp"
+                  />
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active text-align form-new"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  {isActive ? (
+                    <>
+                      <h3 class="register-heading">Register Here</h3>
+                      <div class="row register-form">
+                        <div class="col-md-12">
+                          <form method="post">
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="LGform1_user"
+                                class="form-control"
+                                placeholder="Your First Name *"
+                                value=""
+                                required=""
+                              />
+                            </div>
                             <br />
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                name="LGform1_user"
+                                class="form-control"
+                                placeholder="Your Last Name *"
+                                value=""
+                                required=""
+                              />
+                            </div>
                             <br />
-                            <input
-                              href="ForgetPassword.php"
-                              className="btnForgetPwd text-dark"
-                              value="Forget Password?"
-                              type="button"
-                            />
-                          </div>
-                        </form>
+
+                            <div class="form-group">
+                              <input
+                                type="email"
+                                name="LGform1_user"
+                                class="form-control"
+                                placeholder="Your Email *"
+                                value=""
+                                required=""
+                              />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                              <input
+                                type="password"
+                                name="LGform1_pwd"
+                                class="form-control"
+                                placeholder="Your Password *"
+                                value=""
+                                required=""
+                              />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                              <input
+                                type="submit"
+                                name="LGform1"
+                                class="btnContactSubmit"
+                                value="Submit"
+                              />
+                            </div>
+                          </form>
+                        </div>
                       </div>
-                    </div>
-                  </>
-                )}
+                    </>
+                  ) : (
+                    <>
+                      <h3 class="register-heading">Log in</h3>
+                      <div class="row register-form">
+                        <div class="col-md-12">
+                          {isLoading && (
+                            <Spinner animation="grow" varient="dark" />
+                          )}
+                          {isError && (
+                            <p className="text-red">
+                              Check Credentionals correctly and try again
+                            </p>
+                          )}
+                          <form method="post">
+                            <div class="form-group">
+                              <input
+                                onChange={(e) =>
+                                  setUserCreds({
+                                    ...userCreds,
+                                    email: e.target.value,
+                                  })
+                                }
+                                value={userCreds.email}
+                                type="text"
+                                class="form-control"
+                                placeholder="Your Email *"
+                                style={{ minWidth: "120px" }}
+                              />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                              <input
+                                onChange={(e) =>
+                                  setUserCreds({
+                                    ...userCreds,
+                                    password: e.target.value,
+                                  })
+                                }
+                                value={userCreds.password}
+                                type="password"
+                                class="form-control"
+                                placeholder="Your Password *"
+                                style={{ minWidth: "120px" }}
+                              />
+                            </div>
+                            <br />
+                            <div class="form-group">
+                              <input
+                                onClick={(e) => login(e)}
+                                type="button"
+                                value="Login"
+                              />
+                              <br />
+                              <br />
+                              <input
+                                href="ForgetPassword.php"
+                                className="btnForgetPwd text-dark"
+                                value="Forget Password?"
+                                type="button"
+                              />
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+                <div
+                  class="tab-pane fade show text-align form-new"
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                ></div>
               </div>
-              <div
-                class="tab-pane fade show text-align form-new"
-                id="profile"
-                role="tabpanel"
-                aria-labelledby="profile-tab"
-              ></div>
             </div>
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
     </>
   );
 }
