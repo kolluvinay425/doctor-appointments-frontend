@@ -98,7 +98,7 @@ function NavBar() {
         </Alert>
       )}
       {loginAlert && (
-        <Alert style={{ height: "150px" }} variant="info">
+        <Alert variant="info">
           <b>Please login to book appointment with doctor</b>
         </Alert>
       )}
