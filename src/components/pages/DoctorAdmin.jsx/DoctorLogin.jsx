@@ -3,12 +3,17 @@ import { create } from "axios";
 import { useHistory } from "react-router";
 import { setDoctorInfo, isDocLoggedIn } from "../../../store/actions";
 import { useDispatch } from "react-redux";
+import { Spinner } from "react-bootstrap";
 import API from "../../../helpers/doctorAuth";
 
 import DoctorSignup from "./SignUp";
 
 import "../../../styles/login.css";
+import Button from "@restart/ui/esm/Button";
 function DoctorLogin() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const [isActive, setIsActive] = useState(false);
   const [userCreds, setUserCreds] = useState({
     email: "",
@@ -30,6 +35,7 @@ function DoctorLogin() {
     const password = userCreds.password;
 
     try {
+      setIsLoading(true);
       const { data } = await URL.post(
         "/doctor/login",
         { email, password },
@@ -39,9 +45,13 @@ function DoctorLogin() {
       if (data) {
         localStorage.setItem("DocaccessToken", data.accessToken);
         localStorage.setItem("DocrefreshToken", data.refreshToken);
+        setIsLoading(false);
       } else {
+        console.log("bad request");
       }
     } catch (error) {
+      setIsLoading(false);
+      setIsError(true);
       console.log("error", error);
     }
 
@@ -118,6 +128,14 @@ function DoctorLogin() {
                     <h3 className="register-heading">Log in</h3>
                     <div className="row register-form">
                       <div className="col-md-12">
+                        {isLoading && (
+                          <Spinner animation="grow" varient="dark" />
+                        )}
+                        {isError && (
+                          <p className="text-red">
+                            Check Credentionals correctly and try again
+                          </p>
+                        )}
                         <form method="post">
                           <div className="form-group">
                             <input
@@ -154,15 +172,17 @@ function DoctorLogin() {
                               onClick={(e) => login(e)}
                               type="button"
                               value="Login"
+                              style={{ maxWidth: "70px", maxHeight: "50px" }}
                             />
-                            <a
-                              href="ForgetPassword.php"
-                              className="btnForgetPwd"
-                              value="Login"
-                            >
-                              Forget Password?
-                            </a>
+                            <br />
+                            <br />
                           </div>
+                          <input
+                            href="ForgetPassword.php"
+                            className="btnForgetPwd text-dark"
+                            value="Forget Password?"
+                            type="button"
+                          />
                         </form>
                       </div>
                     </div>

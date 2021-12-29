@@ -6,8 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { findHospitals } from "../../../store/actions";
 import HospitalQuery from "./HospitalQuery";
 import HospitalList from "./HospitalList";
+import { Spinner } from "react-bootstrap";
 import { BE_URL } from "../../../helpers/apiFetches";
 function Hospital() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const hospitalQuery = useSelector((s) => s.hospitals.queryData);
@@ -15,12 +18,15 @@ function Hospital() {
 
   const searchHospital = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     dispatch(findHospitals(query));
+    setIsLoading(false);
   };
 
   useEffect(() => {
     const getHospitals = async () => {
+      setIsLoading(true);
       try {
         const resp = await fetch(`${BE_URL}/hospital/all`);
 
@@ -28,8 +34,12 @@ function Hospital() {
           const data = await resp.json();
           console.log("hospitals", data);
           dispatch(fetchHospitals(data));
+          setIsLoading(false);
         }
-      } catch (error) {}
+      } catch (error) {
+        setIsLoading(false);
+        setIsError(true);
+      }
     };
     getHospitals();
   }, [dispatch]);
@@ -62,6 +72,10 @@ function Hospital() {
       </div>
       <div className="container">
         <div className="row">
+          {isLoading && <Spinner animation="grow" varient="dark" />}
+          {isError && (
+            <p className="text-red">Something went wrong refresh the page</p>
+          )}
           {check ? (
             <>
               <h5>search results</h5>

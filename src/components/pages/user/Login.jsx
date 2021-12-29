@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { create } from "axios";
 import { useHistory } from "react-router";
+import { Spinner } from "react-bootstrap";
 import { setUserInfo, isLoggedIn } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { loginAlert } from "../../../store/actions";
@@ -10,6 +11,8 @@ import { BE_URL } from "../../../helpers/apiFetches";
 export const URL = create({ baseURL: BE_URL });
 
 function Login() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [userCreds, setUserCreds] = useState({
     email: "",
@@ -26,6 +29,7 @@ function Login() {
     const email = userCreds.email;
     const password = userCreds.password;
     try {
+      setIsLoading(true);
       const { data } = await URL.post(
         "/user/login",
         { email, password },
@@ -35,10 +39,13 @@ function Login() {
       if (data) {
         localStorage.setItem("accessToken", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
+        setIsLoading(false);
       } else {
       }
     } catch (error) {
       console.log("error", error);
+      setIsLoading(false);
+      setIsError(true);
     }
 
     getUserInfo();
@@ -173,6 +180,14 @@ function Login() {
                     <h3 class="register-heading">Log in</h3>
                     <div class="row register-form">
                       <div class="col-md-12">
+                        {isLoading && (
+                          <Spinner animation="grow" varient="dark" />
+                        )}
+                        {isError && (
+                          <p className="text-red">
+                            Check Credentionals correctly and try again
+                          </p>
+                        )}
                         <form method="post">
                           <div class="form-group">
                             <input
@@ -212,13 +227,14 @@ function Login() {
                               type="button"
                               value="Login"
                             />
-                            <a
+                            <br />
+                            <br />
+                            <input
                               href="ForgetPassword.php"
-                              class="btnForgetPwd"
-                              value="Login"
-                            >
-                              Forget Password?
-                            </a>
+                              className="btnForgetPwd text-dark"
+                              value="Forget Password?"
+                              type="button"
+                            />
                           </div>
                         </form>
                       </div>
