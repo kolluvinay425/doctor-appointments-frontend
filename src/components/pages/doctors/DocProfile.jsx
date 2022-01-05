@@ -17,17 +17,23 @@ function DocProfile() {
   const modalShow = useSelector((s) => s.appointment.isModel);
   console.log("isModelOpen", modalShow);
 
-  const today = new Date();
-  const date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  console.log("todaydate", date);
+  let todayy = new Date();
+  let dd = String(todayy.getDate()).padStart(2, "0");
+  let mm = String(todayy.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = todayy.getFullYear();
+
+  todayy = yyyy + "-" + mm + "-" + dd;
+
   const [slots, setSlots] = useState(false);
-  const [todayDate, setTodayDate] = useState(date);
+  const [todayDate, setTodayDate] = useState(todayy);
   console.log("hereeees", todayDate);
   const { id } = useParams();
   const appointments = useSelector((s) => s.appointment.queryAppointment);
   const emptyAppointments = appointments.length === 0;
-
+  const emptySlots = () =>
+    setTimeout(() => {
+      return <h5>sfskdjbvksdj</h5>;
+    }, 5000);
   const doc = useSelector((s) => s.doctor.doctorDetail);
   // const fetchTodayAppointments = async () => {
   //   console.log("today's date", todayDate);
@@ -172,7 +178,7 @@ function DocProfile() {
 
               <div class="row mt-4" style={{ marginLeft: "20px" }}>
                 {emptyAppointments ? (
-                  <h5>No Appointments Found</h5>
+                  <h5>no slots found</h5>
                 ) : (
                   appointments.map((app) => (
                     <>
