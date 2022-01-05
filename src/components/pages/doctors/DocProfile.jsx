@@ -178,7 +178,7 @@ function DocProfile() {
 
               <div class="row mt-4" style={{ marginLeft: "20px" }}>
                 {emptyAppointments ? (
-                  <h5>no slots found</h5>
+                  <h5>no slots found, Try by changing the date</h5>
                 ) : (
                   appointments.map((app) => (
                     <>

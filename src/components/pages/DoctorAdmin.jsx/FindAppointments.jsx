@@ -9,10 +9,13 @@ import SlotModal from "./SlotModal";
 function FindAppointments() {
   const [currentAppointment, setCurrentAppointment] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const today = new Date();
-  const todayDate =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  const [datee, setDate] = useState(todayDate);
+  let todayy = new Date();
+  let dd = String(todayy.getDate()).padStart(2, "0");
+  let mm = String(todayy.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = todayy.getFullYear();
+
+  todayy = yyyy + "-" + mm + "-" + dd;
+  const [datee, setDate] = useState(todayy);
   const dispatch = useDispatch();
   const data = useSelector((s) => s.doctor);
   const check = data.queryData.length > 0;

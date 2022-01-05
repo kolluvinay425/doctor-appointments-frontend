@@ -3,10 +3,14 @@ import { Button, Form, Alert } from "react-bootstrap";
 import API from "../../../helpers/doctorAuth";
 
 function PostAppointmnet() {
-  const today = new Date();
-  const todayDatee =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-  const [datee, setDate] = useState(todayDatee);
+  let todayy = new Date();
+  let dd = String(todayy.getDate()).padStart(2, "0");
+  let mm = String(todayy.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = todayy.getFullYear();
+
+  todayy = yyyy + "-" + mm + "-" + dd;
+
+  const [datee, setDate] = useState(todayy);
   const [startTimee, setStartTime] = useState("09:00");
   const [endTimee, setEndTime] = useState("10:00");
   const [isPosted, setIsPosted] = useState(false);

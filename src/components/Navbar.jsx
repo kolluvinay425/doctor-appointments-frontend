@@ -105,7 +105,8 @@ function NavBar() {
       {bookingAlert && (
         <Alert variant="success">
           <b>
-            appointment booked successfully check your email for conformation
+            appointment booked successfully check your email for pdf
+            conformation
           </b>
         </Alert>
       )}
