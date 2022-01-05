@@ -22,7 +22,7 @@ const Footer = () => (
           href="https://mdbootstrap.com/"
         >
           {" "}
-          Vinay Monster
+          Vinay Kumar
         </a>
       </div>
     </footer>

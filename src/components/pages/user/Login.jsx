@@ -83,9 +83,6 @@ function Login() {
       <br />
       <br />
       <br />
-      <br />
-      <br />
-      <br />
 
       <div style={{ height: "100vh" }}>
         <div
