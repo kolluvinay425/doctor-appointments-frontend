@@ -88,7 +88,10 @@ function Login() {
       <br />
 
       <div style={{ height: "100vh" }}>
-        <div class="container register" style={{ minWidth: "150px" }}>
+        <div
+          class="container register"
+          style={{ minWidth: "200px", maxWidth: "550px" }}
+        >
           <div class="row">
             <div class="col-md-12">
               <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -126,7 +129,7 @@ function Login() {
                     <>
                       <h3 class="register-heading">Log in</h3>
                       <div class="row register-form">
-                        <div class="col-md-12">
+                        <div class="col-sm-12 col-md-12 ">
                           {isLoading && (
                             <Spinner animation="grow" varient="dark" />
                           )}
@@ -148,7 +151,7 @@ function Login() {
                                 type="text"
                                 class="form-control"
                                 placeholder="Your Email *"
-                                style={{ minWidth: "120px" }}
+                                style={{ minWidth: "170px" }}
                               />
                             </div>
                             <br />
@@ -164,7 +167,7 @@ function Login() {
                                 type="password"
                                 class="form-control"
                                 placeholder="Your Password *"
-                                style={{ minWidth: "120px" }}
+                                style={{ minWidth: "170px" }}
                               />
                             </div>
                             <br />

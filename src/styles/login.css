@@ -38,7 +38,7 @@
 .btnLoginSubmit {
   border: none;
   padding: 2%;
-  width: 10%;
+  width: 5%;
   cursor: pointer;
   background: #29abe2;
   color: #fff;
@@ -52,7 +52,6 @@
   background: -webkit-linear-gradient(left, #3931af, #00c6ff);
   /* margin-top: 3%; */
   padding: 3%;
-  width: 50%;
   border-radius: 2.5rem;
 }
 .nav-tabs .nav-link {
