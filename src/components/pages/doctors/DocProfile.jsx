@@ -23,6 +23,7 @@ function DocProfile() {
   console.log("todaydate", date);
   const [slots, setSlots] = useState(false);
   const [todayDate, setTodayDate] = useState(date);
+  console.log("hereeees", todayDate);
   const { id } = useParams();
   const appointments = useSelector((s) => s.appointment.queryAppointment);
   const emptyAppointments = appointments.length === 0;
