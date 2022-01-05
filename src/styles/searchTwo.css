@@ -12,7 +12,8 @@
 
 .bbbootstrap form {
   position: relative;
-  width: 540px;
+  max-width: 540px;
+  min-width: 170px;
   margin: 22px auto 0;
 }
 

@@ -7,7 +7,7 @@ function HospitalList() {
   //   console.log("id", id);
   return (
     <>
-      <div className="row" style={{ height: "100vh" }}>
+      <div className="row">
         <h4 className="text-center">
           <strong className="p-0">Hospitals based on your Location</strong>
         </h4>

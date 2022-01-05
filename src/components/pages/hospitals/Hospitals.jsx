@@ -59,7 +59,7 @@ function Hospital() {
               onKeyUp={searchHospital}
               value={query}
               placeholder="Search Hospital by name, location, city.... "
-              className="InputBox "
+              className="form-control"
             />
             <input
               type="submit"
@@ -82,7 +82,9 @@ function Hospital() {
               <HospitalQuery />
             </>
           ) : (
-            <HospitalList />
+            <>
+              <HospitalList />
+            </>
           )}
         </div>
       </div>
