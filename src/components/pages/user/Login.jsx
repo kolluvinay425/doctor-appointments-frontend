@@ -97,6 +97,7 @@ function Login() {
               <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                 <li class="nav-item">
                   <input
+                    style={{ minWidth: "100px" }}
                     onClick={toggleAuth}
                     class="nav-link active"
                     id="home-tab"
@@ -106,6 +107,7 @@ function Login() {
                 </li>
                 <li class="nav-item">
                   <input
+                    style={{ minWidth: "100px" }}
                     onClick={toggleAuth}
                     class="nav-link active"
                     id="profile-tab"

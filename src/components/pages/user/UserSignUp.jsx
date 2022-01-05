@@ -42,6 +42,7 @@ function UserSignUp() {
           <form method="post">
             <div class="form-group">
               <input
+                style={{ minWidth: "170px" }}
                 onChange={(e) =>
                   setUserRigister({
                     ...userRegister,
@@ -58,6 +59,7 @@ function UserSignUp() {
             <br />
             <div class="form-group">
               <input
+                style={{ minWidth: "170px" }}
                 type="text"
                 onChange={(e) =>
                   setUserRigister({
@@ -75,6 +77,7 @@ function UserSignUp() {
 
             <div class="form-group">
               <input
+                style={{ minWidth: "170px" }}
                 onChange={(e) =>
                   setUserRigister({
                     ...userRegister,
@@ -91,6 +94,7 @@ function UserSignUp() {
             <br />
             <div class="form-group">
               <input
+                style={{ minWidth: "170px" }}
                 onChange={(e) =>
                   setUserRigister({
                     ...userRegister,
@@ -106,12 +110,7 @@ function UserSignUp() {
             </div>
             <br />
             <div class="form-group">
-              <input
-                onClick={handleSubmit}
-                type="submit"
-                class="btnContactSubmit"
-                value="Submit"
-              />
+              <input onClick={handleSubmit} type="button" value="Submit" />
             </div>
           </form>
         </div>
