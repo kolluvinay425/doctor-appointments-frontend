@@ -46,9 +46,9 @@ function NavBar() {
             <MdMedicalServices />
           </h2>
         </Link>
-        <Bars />
+
         <NavMenu>
-          <NavLink to="/about" activeStyle>
+          {/* <NavLink to="/about" activeStyle>
             <b>About</b>
           </NavLink>
           <NavLink to="/services" activeStyle>
@@ -56,7 +56,7 @@ function NavBar() {
           </NavLink>
           <NavLink to="/contact-us" activeStyle>
             <b>Contact Us</b>
-          </NavLink>
+          </NavLink> */}
           {isUserLoddedIn.isLoggedIn ? (
             <NavLink to="" onClick={logout} activeStyle>
               <b style={{ color: "white" }}>Log Out</b>
