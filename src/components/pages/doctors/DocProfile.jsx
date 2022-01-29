@@ -25,6 +25,8 @@ function DocProfile() {
   todayy = yyyy + "-" + mm + "-" + dd;
 
   const [slots, setSlots] = useState(false);
+  const [messages, setMessage] = useState(false);
+
   const [todayDate, setTodayDate] = useState(todayy);
   console.log("hereeees", todayDate);
   const { id } = useParams();
@@ -55,7 +57,12 @@ function DocProfile() {
     searchAppointments();
   }, [dispatch, id]);
   const openSlots = () => {
-    setSlots(!slots);
+    setMessage(false);
+    setSlots(true);
+  };
+  const message = () => {
+    setSlots(false);
+    setMessage(true);
   };
   return (
     <div class="container mt-0">
@@ -121,6 +128,7 @@ function DocProfile() {
               <div class="buttons">
                 {" "}
                 <input
+                  onClick={message}
                   type="button"
                   value="Message"
                   class="btn btn-primary px-4 ms-3"
@@ -143,6 +151,17 @@ function DocProfile() {
             </div>
           </div>
         </div>
+        {messages ? (
+          <div class="col-md-6">
+            <h2>Messaging Feature Coming Soon</h2>
+            <p>
+              This messageing Feature going to use socket IO technology that
+              allows users to send real time messages to Doctor
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
         {slots ? (
           <div class="col-md-6">
             <div class="card p-3 py-4">
