@@ -10,7 +10,7 @@ function CarouselSlide() {
     setTimeout(() => {
       dispatch(isUserRegistered(false));
     }, 5000);
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <div class="hero-image" style={{ height: "100vh" }}>

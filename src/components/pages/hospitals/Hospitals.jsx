@@ -9,6 +9,7 @@ import HospitalList from "./HospitalList";
 import { Spinner } from "react-bootstrap";
 import { BE_URL } from "../../../helpers/apiFetches";
 function Hospital() {
+  console.log(process.env.CI);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [query, setQuery] = useState("");

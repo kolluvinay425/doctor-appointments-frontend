@@ -9,7 +9,6 @@ import API from "../../../helpers/doctorAuth";
 import DoctorSignup from "./SignUp";
 
 import "../../../styles/login.css";
-import Button from "@restart/ui/esm/Button";
 function DoctorLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);

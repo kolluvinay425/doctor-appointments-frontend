@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { BE_URL } from "../../../helpers/apiFetches";
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { isUserRegistered } from "../../../store/actions";
 function UserSignUp() {
   const [userRegister, setUserRigister] = useState({

@@ -6,7 +6,6 @@ import {
   IS_DOC_LOGGEDIN,
   SET_DOCTOR_INFO,
   GET_DOCTOR_QUERY_APPOINTMENTS,
-  IS_REGISTERED,
 } from "../actions";
 import { initialState } from "..";
 

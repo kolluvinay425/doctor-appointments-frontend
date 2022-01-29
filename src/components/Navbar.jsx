@@ -12,7 +12,6 @@ import "../styles/carousel.css";
 import {
   Nav,
   NavLink,
-  Bars,
   NavMenu,
   NavBtn,
   NavBtnLink,

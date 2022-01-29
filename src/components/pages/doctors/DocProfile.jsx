@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import "../../../styles/docProfile.css";
 import "../../../styles/carousel.css";
-
+import { useCallback } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { doctorDetail } from "../../../store/actions";
@@ -32,30 +32,27 @@ function DocProfile() {
   const { id } = useParams();
   const appointments = useSelector((s) => s.appointment.queryAppointment);
   const emptyAppointments = appointments.length === 0;
-  const emptySlots = () =>
-    setTimeout(() => {
-      return <h5>sfskdjbvksdj</h5>;
-    }, 5000);
-  const doc = useSelector((s) => s.doctor.doctorDetail);
-  // const fetchTodayAppointments = async () => {
-  //   console.log("today's date", todayDate);
 
-  //   dispatch(queryAppointments(id, todayDate));
-  //   console.log("searching for today appointments", appointments);
-  // };
-  const searchAppointments = async () => {
-    console.log("searching for appointment slots on", todayDate);
+  const doc = useSelector((s) => s.doctor.doctorDetail);
+  const searchAppointments = useCallback(async () => {
+    // console.log("searching for appointment slots on", todayDate);
 
     dispatch(queryAppointments(id, todayDate));
-    console.log("search results for appointments", appointments);
-  };
+    // console.log("search results for appointments", appointments);
+  }, [dispatch, id, todayDate]);
+  // const searchAppointments = async () => {
+  //   console.log("searching for appointment slots on", todayDate);
+
+  //   dispatch(queryAppointments(id, todayDate));
+  //   console.log("search results for appointments", appointments);
+  // };
   useEffect(() => {
     const docDetail = async () => {
       dispatch(doctorDetail(id));
     };
     docDetail();
-    searchAppointments();
-  }, [dispatch, id]);
+    searchAppointments(); //
+  }, [dispatch, id, searchAppointments]);
   const openSlots = () => {
     setMessage(false);
     setSlots(true);
