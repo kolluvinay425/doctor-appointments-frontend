@@ -2,32 +2,24 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../../../styles/userProfile.css";
 import { setUserInfo } from "../../../store/actions";
+import { BE_URL } from "../../../helpers/apiFetches";
 function UserProfile() {
   const dispatch = useDispatch();
   const userProfile = useSelector((user) => user.user);
-  const [fileName, setFileName] = useState(null);
   const updateImage = async (e) => {
     e.preventDefault();
 
     try {
       const form = new FormData();
       form.append("image", e.target.files[0]);
-      console.log("image", e.target.files[0]);
-      // const data = await API.post(`user/update-profile-image`, form, {
-      //   headers: {
-      //     "Content-type": "multipart/form-data",
-      //   },
-      // });
-      const resp = await fetch(
-        "http://localhost:3001/user/update-profile-image",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-          body: form,
-        }
-      );
+      //console.log("image", e.target.files[0]);
+      const resp = await fetch(`${BE_URL}/user/update-profile-image`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: form,
+      });
 
       if (resp) {
         const data = await resp.json();
