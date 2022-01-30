@@ -1,28 +1,37 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../../../styles/userProfile.css";
-import { BE_URL } from "../../../helpers/apiFetches";
-import API from "../../../helpers/apiFetches";
-// import axios from "axios";
+import { setUserInfo } from "../../../store/actions";
 function UserProfile() {
+  const dispatch = useDispatch();
   const userProfile = useSelector((user) => user.user);
   const [fileName, setFileName] = useState(null);
   const updateImage = async (e) => {
-    //setFileName(e.target.files[0]);
-    //console.log("image", fileName);
-
-    //const image = formData.get("image");
-    // console.log("image55", form);
+    e.preventDefault();
 
     try {
       const form = new FormData();
-      form.append("image", fileName);
-      console.log("image55", form);
-      const { data } = await API.post(`user/update-profile-image`, {
-        form,
-      });
+      form.append("image", e.target.files[0]);
+      console.log("image", e.target.files[0]);
+      // const data = await API.post(`user/update-profile-image`, form, {
+      //   headers: {
+      //     "Content-type": "multipart/form-data",
+      //   },
+      // });
+      const resp = await fetch(
+        "http://localhost:3001/user/update-profile-image",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: form,
+        }
+      );
 
-      if (data) {
+      if (resp) {
+        const data = await resp.json();
+        dispatch(setUserInfo(data));
         console.log("Image Updated", data);
       }
     } catch (error) {
@@ -47,14 +56,15 @@ function UserProfile() {
       <div class="fileUpload">
         <input
           onChange={(e) => {
-            setFileName(e.target.files[0]);
+            updateImage(e);
           }}
           type="file"
           class="upload"
         />
-        <span>
-          <i className="bi bi-pencil-square ">edit</i>
-          <button onClick={updateImage}>save</button>
+        <span style={{ cursor: "pointer", maxWidth: "50px" }}>
+          <i style={{ cursor: "pointer" }} className="bi bi-pencil-square ">
+            Change
+          </i>
         </span>
       </div>
       <br />
