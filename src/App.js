@@ -18,6 +18,9 @@ import { PersistGate } from "redux-persist/integration/react";
 import Sidebar from "./components/pages/DoctorAdmin.jsx/Sidebar";
 import DocNavbar from "./components/DocNavbar";
 function App() {
+  setInterval(() => {
+    console.log("Interval triggered, firing up heroku dyno's");
+  }, 1000);
   return (
     <>
       <Provider store={configureStore}>
