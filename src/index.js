@@ -7,6 +7,14 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <script
+      data-id="xenioo"
+      data-node="app02"
+      src="https://static.xenioo.com/webchat/xenioowebchat.js"
+    ></script>
+    <script>
+      xenioowebchat.Start("de802693-7cfe-4454-852e-56dcd8d3fe66");
+    </script>
   </React.StrictMode>,
   document.getElementById("root")
 );
